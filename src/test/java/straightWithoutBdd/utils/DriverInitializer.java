@@ -1,4 +1,4 @@
-package straightWithoutBdd.ui.utils;
+package straightWithoutBdd.utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
