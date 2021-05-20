@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import static straightWithoutBdd.ui.utils.DriverInitializer.setBrowser;
+import static straightWithoutBdd.utils.DriverInitializer.setBrowser;
 
 public class BaseTest implements Loggable {
     WebDriver driver;
