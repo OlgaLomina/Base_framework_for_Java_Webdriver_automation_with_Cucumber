@@ -1,15 +1,15 @@
-package definitions;
+package bdd.definitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.QuoteForm;
-import pages.QuoteResult;
+import bdd.pages.QuoteForm;
+import bdd.pages.QuoteResult;
 
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static support.TestContext.getData;
+import static bdd.support.TestContext.getData;
 
 public class QuoteStepDefs {
 

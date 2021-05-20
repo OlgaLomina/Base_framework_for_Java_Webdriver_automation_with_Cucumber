@@ -1,10 +1,10 @@
-package pages;
+package bdd.pages;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import static org.assertj.core.api.Assertions.assertThat;
-import static support.TestContext.getDriver;
+import static bdd.support.TestContext.getDriver;
 
 public class QuoteForm extends Page {
 

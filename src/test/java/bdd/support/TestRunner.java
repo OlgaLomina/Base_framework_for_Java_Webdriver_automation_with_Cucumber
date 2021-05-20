@@ -1,4 +1,4 @@
-package support;
+package bdd.support;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber"},
         features = "src/test/resources/features",
-        glue = {"definitions", "support"},
+        glue = {"bdd/definitions", "bdd/support"},
         tags = "@quote" // same as VM option -Dcucumber.options="--tags @quote"
 )
 public class TestRunner {

@@ -1,4 +1,4 @@
-package support;
+package bdd.support;
 
 import java.util.List;
 
