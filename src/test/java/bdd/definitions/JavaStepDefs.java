@@ -1,4 +1,4 @@
-package definitions;
+package bdd.definitions;
 
 import io.cucumber.java.en.Given;
 

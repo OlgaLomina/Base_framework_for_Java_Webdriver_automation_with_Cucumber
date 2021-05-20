@@ -1,5 +1,4 @@
-// Created by Viacheslav (Slava) Skryabin 04/01/2011
-package support;
+package bdd.support;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
@@ -27,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import support.Config;
 
 public class TestContext {
 

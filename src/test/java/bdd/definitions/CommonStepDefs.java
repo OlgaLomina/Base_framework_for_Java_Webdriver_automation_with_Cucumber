@@ -1,7 +1,7 @@
-package definitions;
+package bdd.definitions;
 
 import io.cucumber.java.en.Given;
-import pages.QuoteForm;
+import bdd.pages.QuoteForm;
 
 public class CommonStepDefs {
 
