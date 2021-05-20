@@ -1,17 +1,14 @@
 package codingTasks;
 
-import org.testng.annotations.Test;
-
 public class FizzBuzz {
 
 
-    @Test
-    public void iSolveCodingChallenges() {
+    public static void main(String[] args) {
         fizzBuzz(20);
     }
 
 
-    void fizzBuzz(int num) {
+    static void fizzBuzz(int num) {
         System.out.println("FizzBuzz for " + num);
         for (int i = 1; i <= num; i++) {
             if (i % 3 == 0 && i % 5 == 0) {
