@@ -18,6 +18,6 @@ public class BaseTest implements Loggable {
 
     @Test
     public void testSample() {
-
+        driver.get("https://www.google.com/");
     }
 }
