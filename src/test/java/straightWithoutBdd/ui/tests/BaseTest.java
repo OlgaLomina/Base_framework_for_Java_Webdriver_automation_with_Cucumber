@@ -19,19 +19,14 @@ public class BaseTest implements Loggable {
         }
     }
 
-    @Test
-    public void testSample() {
-        driver.get("https://www.google.com/");
-    }
-
-
-    /**
-     * Uncomment if you want browser to close
-     */
-//    @AfterTest
-//    public void closeDriver(){
-//        driver.quit();
+//    @Test
+//    public void testSample() {
+//        driver.get("https://www.google.com/");
 //    }
 
+    @AfterTest
+    public void closeDriver(){
+        driver.quit();
+    }
 
 }
