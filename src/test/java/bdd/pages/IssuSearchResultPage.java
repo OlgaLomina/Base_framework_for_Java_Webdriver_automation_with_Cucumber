@@ -26,7 +26,4 @@ public class IssuSearchResultPage extends Page {
             System.out.println(e);
         }
     }
-
-
-
 }

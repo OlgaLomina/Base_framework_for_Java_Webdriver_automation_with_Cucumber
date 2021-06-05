@@ -3,11 +3,14 @@ package straightWithoutBdd.ui.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import straightWithoutBdd.ui.pages.IssuMainJournalPage;
 
 import java.util.List;
+
 
 public class BadAndGoodSampleTests extends BaseTest {
 
@@ -40,6 +43,10 @@ public class BadAndGoodSampleTests extends BaseTest {
         mainPage.open();
         List<String> titles = mainPage.search(testWord)
                 .getTitles();
+
+        WebDriverWait wait=new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+
 
         // Option 1 - Assertions inside tests (more preferable)
         for (String e : titles) {

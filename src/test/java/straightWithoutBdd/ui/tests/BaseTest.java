@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import static straightWithoutBdd.utils.DriverInitializer.setBrowser;
 
 public class BaseTest implements Loggable {
-    WebDriver driver;
+    public WebDriver driver;
 
     @BeforeTest
     public void setup() {
