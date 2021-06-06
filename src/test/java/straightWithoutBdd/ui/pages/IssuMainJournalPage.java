@@ -34,9 +34,9 @@ public class IssuMainJournalPage extends BasePage {
         return new IssuSearchResultPage(driver);
     }
 
-    public void validateTitles(List<String> titles){
+    public void validateTitles(List<String> titles, String expectedWord){
         for(String e : titles){
-            Assert.assertEquals(e, "Forbes");
+            Assert.assertTrue(e.contains(expectedWord));
         }
     }
 
