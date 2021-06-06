@@ -27,7 +27,7 @@ public class BadAndGoodSampleTests extends BaseTest {
         driver.findElement(By.cssSelector("form > div > input")).sendKeys(Keys.ENTER);
         List<WebElement> list = driver.findElements(By.cssSelector("div.sc-15dtij-6.ibabWW > a > h4"));
         for (WebElement e : list) {
-            Assert.assertEquals(e.getText(), "Forbes");
+            Assert.assertEquals(e.getText(), "National Geographic");
         }
     }
 
