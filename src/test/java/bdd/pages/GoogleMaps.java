@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static bdd.support.TestContext.getActions;
+
 public class GoogleMaps extends Page {
     public GoogleMaps() {
         url = "https://www.google.com/maps/";
@@ -25,7 +27,7 @@ public class GoogleMaps extends Page {
 
     public void typeDestination(String dest) {
         searchField.sendKeys(dest);
-        searchField.sendKeys(Keys.ENTER);
+        getActions().sendKeys(Keys.ENTER);
     }
 
     public void clickDirectionButton() {
@@ -34,11 +36,12 @@ public class GoogleMaps extends Page {
 
     public void typeStartingPoint(String start) {
         startingPoint.sendKeys(start);
-        startingPoint.sendKeys(Keys.ENTER);
+        getActions().sendKeys(Keys.ENTER);
     }
 
     public void waitDirections() {
         this.waitForVisible(routes.get(0));
+
     }
 
     public boolean isRouteExist(String neededRoute) {
