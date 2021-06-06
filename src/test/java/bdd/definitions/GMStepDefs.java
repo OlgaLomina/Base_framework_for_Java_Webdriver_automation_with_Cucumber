@@ -32,22 +32,9 @@ public class GMStepDefs {
         maps.typeStartingPoint(startingPoint);
     }
 
-    @And("I wait {int} seconds")
-    public void iWaitSeconds(int seconds) {
-        try {
-            Thread.sleep(seconds * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @And("I wait the results")
-    public void iWaitTheResults() {
-        maps.waitDirections();
-    }
-
     @Then("I validate {string} in results")
     public void iValidateInResults(String bestRoute) {
+        maps.waitDirections();
         assertThat(maps.isRouteExist(bestRoute)).isTrue();
     }
 
