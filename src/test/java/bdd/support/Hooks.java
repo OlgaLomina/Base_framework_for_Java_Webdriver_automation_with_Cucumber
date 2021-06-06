@@ -20,13 +20,13 @@ public class Hooks {
         getDriver().manage().deleteAllCookies();
     }
 
-    @After(order = 0)
-    public void scenarioEnd(Scenario scenario) {
-        if (scenario.isFailed()) {
-            TakesScreenshot screenshotTaker = (TakesScreenshot) getDriver();
-            byte[] screenshot = screenshotTaker.getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "Screenshot");
-        }
-        TestContext.teardown();
-    }
+//    @After(order = 0)
+//    public void scenarioEnd(Scenario scenario) {
+//        if (scenario.isFailed()) {
+//            TakesScreenshot screenshotTaker = (TakesScreenshot) getDriver();
+//            byte[] screenshot = screenshotTaker.getScreenshotAs(OutputType.BYTES);
+//            scenario.attach(screenshot, "image/png", "Screenshot");
+//        }
+//        TestContext.teardown();
+//    }
 }
