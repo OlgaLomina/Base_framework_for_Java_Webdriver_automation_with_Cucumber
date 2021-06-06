@@ -17,12 +17,9 @@ public class AskDashboardPage extends Page {
     @FindBy(xpath = "//mat-list/header/div/p")
     private WebElement role;
 
-    //"ac-side-menu > mat-list > a")
-    @FindBy(css = "div > div.mat-list-text > h5")
+    //@FindBy(css = "div > div.mat-list-text > h5")
+    @FindBy(css = "ac-side-menu > mat-list > a")
     private List<WebElement> menuItems;
-
-    @FindBy(xpath = "//ac-side-menu/mat-list/a[1]")
-    private WebElement menuItemHome;
 
     @FindBy(xpath = "//mat-list/mat-list-item/div")
     private WebElement logOutButton;
