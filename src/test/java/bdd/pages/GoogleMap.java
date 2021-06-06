@@ -1,19 +1,20 @@
 package bdd.pages;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.apache.tools.ant.types.Assertions;
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 import static bdd.support.TestContext.getDriver;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Map extends Page {
 
-    public Map(){
+public class GoogleMap extends Page {
+
+    String  distance = "";
+
+    public GoogleMap(){
         url = "https://www.google.com/maps";
     }
 
@@ -29,8 +30,11 @@ public class Map extends Page {
     @FindBy (xpath = "(//button[@class='searchbox-searchbutton'])[3]")
     private WebElement searchRouteButton;
 
-    @FindBy (xpath = "(//div[@class='section-layout'])[2]")
-    private WebElement fastestRoutText;
+     @FindBy (xpath = "//span[contains(text(),'мин.')]")
+    private List<WebElement> routesList;
+
+    @FindBy (xpath = "//div[@id='section-directions-trip-0']")
+    private WebElement firstRoute;
 
 
     public void iOpenThePage2(String arg0) {
@@ -56,9 +60,26 @@ public class Map extends Page {
         searchRouteButton.click();
     }
 
+
+
+    public String  findFastestRoute(int maxTries) throws InterruptedException{
+        double fastestRoute = Double.MAX_VALUE;
+            for (WebElement route : routesList) {
+                double currentRoute = Double.parseDouble(route.getText().replace("мин", ""));
+                if (currentRoute < fastestRoute) {
+                    fastestRoute = currentRoute;
+                }
+            }
+            System.out.println(fastestRoute);
+        distance = String.valueOf(fastestRoute);
+        System.out.print(distance);
+        return distance;
+
+    }
     public void iVerifyTheFastestRout2() {
-        String routes = fastestRoutText.getText();
-        assertThat(routes.contains("Самый быстрый маршрут")).isTrue();
+        String firstRouteText = firstRoute.getText();
+        assertThat(firstRouteText.contains(distance)).isTrue();
+        assertThat(firstRouteText.contains("Самый быстрый маршрут")).isTrue();
     }
 
 }
