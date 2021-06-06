@@ -1,5 +1,6 @@
 package bdd.definitions;
 
+import bdd.pages.GoogleMaps;
 import io.cucumber.java.en.Given;
 import bdd.pages.QuoteForm;
 
@@ -10,6 +11,9 @@ public class CommonStepDefs {
         switch (page) {
             case "quote":
                 new QuoteForm().open();
+                break;
+            case "Google Maps":
+                new GoogleMaps().open();
                 break;
             default:
                 throw new RuntimeException("Unknown page: " + page);
