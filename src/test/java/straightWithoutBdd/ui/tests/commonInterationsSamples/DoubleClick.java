@@ -6,6 +6,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import straightWithoutBdd.ui.tests.BaseTest;
 
+import static utils.TestContext.getDriver;
+
 public class DoubleClick extends BaseTest {
 
 
@@ -15,11 +17,11 @@ public class DoubleClick extends BaseTest {
 
     @Test
     public void doubleClickAnAlert(){
-        driver.get("https://www.testandquiz.com/selenium/testing.html");
-        Actions actions = new Actions(driver);
-        WebElement elementLocator = driver.findElement(By.cssSelector("#dblClkBtn"));
+        getDriver().get("https://www.testandquiz.com/selenium/testing.html");
+        Actions actions = new Actions(getDriver());
+        WebElement elementLocator = getDriver().findElement(By.cssSelector("#dblClkBtn"));
         actions.doubleClick(elementLocator).perform();
-        System.out.println(driver.switchTo().alert().getText());
+        System.out.println(getDriver().switchTo().alert().getText());
 
     }
 }

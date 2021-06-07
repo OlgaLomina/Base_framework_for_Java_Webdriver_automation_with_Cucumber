@@ -1,5 +1,6 @@
 package straightWithoutBdd.ui.tests;
 
+import bdd.pages.IssuPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -16,11 +17,13 @@ public class IssuTests extends BaseTest {
      * Test with page object model
      * We encapsulate\hide the logic in domain specific language
      */
+
+
+
     @Test
     public void withPageObject() {
+        IssuMainJournalPage mainPage = new IssuMainJournalPage();
         String testWord = "National Geographic";
-
-        IssuMainJournalPage mainPage = new IssuMainJournalPage(driver);
         mainPage.open();
         List<String> titles = mainPage.search(testWord)
                 .getTitles();

@@ -1,13 +1,10 @@
-package bdd.support;
+package utils;
 
 
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+
 import java.util.concurrent.TimeUnit;
-import static bdd.support.TestContext.*;
+import static utils.TestContext.*;
 
 public class Hooks {
 

@@ -1,4 +1,4 @@
-package bdd.support;
+package utils;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;

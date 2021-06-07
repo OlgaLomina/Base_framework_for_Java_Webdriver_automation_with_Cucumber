@@ -3,13 +3,13 @@ package straightWithoutBdd.ui.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import straightWithoutBdd.ui.pages.IssuMainJournalPage;
 
 import java.util.List;
+
+import static utils.TestContext.getDriver;
 
 
 public class BadAndGoodSampleTests extends BaseTest {
@@ -22,10 +22,10 @@ public class BadAndGoodSampleTests extends BaseTest {
 
     @Test
     public void badSample() {
-        driver.get("https://issuu.com/");
-        driver.findElement(By.cssSelector("form > div > input")).sendKeys("National Geographic");
-        driver.findElement(By.cssSelector("form > div > input")).sendKeys(Keys.ENTER);
-        List<WebElement> list = driver.findElements(By.cssSelector("div.sc-15dtij-6.ibabWW > a > h4"));
+        getDriver().get("https://issuu.com/");
+        getDriver().findElement(By.cssSelector("form > div > input")).sendKeys("National Geographic");
+        getDriver().findElement(By.cssSelector("form > div > input")).sendKeys(Keys.ENTER);
+        List<WebElement> list = getDriver().findElements(By.cssSelector("div.sc-15dtij-6.ibabWW > a > h4"));
         for (WebElement e : list) {
             Assert.assertEquals(e.getText(), "National Geographic");
         }
@@ -39,7 +39,7 @@ public class BadAndGoodSampleTests extends BaseTest {
     public void withPageObject() {
         String testWord = "National Geographic";
 
-        IssuMainJournalPage mainPage = new IssuMainJournalPage(driver);
+        IssuMainJournalPage mainPage = new IssuMainJournalPage();
         mainPage.open();
         List<String> titles = mainPage.search(testWord)
                 .getTitles();
