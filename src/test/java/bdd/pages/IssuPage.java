@@ -4,15 +4,18 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 
+import static utils.TestContext.getDriver;
+
 public class IssuPage extends Page {
 
 
-    public IssuPage(WebDriver driver) {
+    public IssuPage() {
         url = "https://issuu.com/";
     }
 

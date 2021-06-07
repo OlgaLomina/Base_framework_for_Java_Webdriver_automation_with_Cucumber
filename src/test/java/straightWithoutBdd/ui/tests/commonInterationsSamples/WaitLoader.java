@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import straightWithoutBdd.ui.tests.BaseTest;
 
+import static utils.TestContext.getDriver;
+
 public class WaitLoader extends BaseTest {
 
 
@@ -14,11 +16,11 @@ public class WaitLoader extends BaseTest {
      */
     @Test
     public void checkLoader(){
-        driver.get("https://demoqa.com/progress-bar");
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        getDriver().get("https://demoqa.com/progress-bar");
+        WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("#startStopButton"))));
-        driver.findElement(By.cssSelector("#startStopButton")).click();
+        wait.until(ExpectedConditions.visibilityOf(getDriver().findElement(By.cssSelector("#startStopButton"))));
+        getDriver().findElement(By.cssSelector("#startStopButton")).click();
 
         wait.until(ExpectedConditions.textToBe(By.cssSelector("#progressBar > div"), "100%"));
 

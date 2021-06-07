@@ -8,10 +8,10 @@ import org.testng.Assert;
 
 import java.util.List;
 
-import static bdd.support.TestContext.getDriver;
+import static utils.TestContext.getDriver;
 
 public class IssuStepDefs {
-    IssuPage issuPage = new IssuPage(getDriver());
+    IssuPage issuPage = new IssuPage();
 
     @Given("Navigate to main Page")
     public void navigateToMainPage() {
