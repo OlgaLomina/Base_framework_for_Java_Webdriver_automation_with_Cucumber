@@ -28,10 +28,10 @@ public class BaseTest implements Loggable {
     /**
      * Uncomment if you want browser to close
      */
-//    @AfterTest
-//    public void closeDriver(){
-//        driver.quit();
-//    }
+    @AfterTest
+    public void closeDriver(){
+        driver.quit();
+    }
 
 
 }
