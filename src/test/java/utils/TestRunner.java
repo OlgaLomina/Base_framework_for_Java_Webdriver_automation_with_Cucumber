@@ -10,7 +10,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber"},
         features = "src/test/resources/features",
-        glue = {"bdd/definitions", "bdd/support"}
+        glue = {"bdd/definitions", "bdd/support"},
+        tags = "@issu2"
 //        tags = "@quote" // same as VM option -Dcucumber.options="--tags @quote"
 )
 public class TestRunner {
