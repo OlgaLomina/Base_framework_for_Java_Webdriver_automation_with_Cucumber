@@ -19,12 +19,16 @@ public class GoogleMaps extends BasePage {
 
     @FindBy(xpath = "//input[@id='searchboxinput']")
     private WebElement destinationPointField;
+
     @FindBy (xpath = "//button[@id='searchbox-directions']")
     private WebElement searchDestinationButton;
+
     @FindBy (xpath = "//div[contains(@id,'directions-searchbox-0')]/..//input")
     private WebElement startPointField;
+
     @FindBy (xpath = "//span[contains(text(), 'min')]")
     private List<WebElement> results;
+
     @FindBy (xpath = "//*[contains(text(), 'Fastest route')]/../../../..")
     private WebElement fasterRoute;
 
@@ -35,7 +39,7 @@ public class GoogleMaps extends BasePage {
 
 
     public void typeAddressInDestination(String address){
-        //TestContext.getWait().until(ExpectedConditions.visibilityOf(destinationPointField));
+        waitForVisible(destinationPointField);
         destinationPointField.sendKeys(address);
     }
     public void clickDestinationButton(){

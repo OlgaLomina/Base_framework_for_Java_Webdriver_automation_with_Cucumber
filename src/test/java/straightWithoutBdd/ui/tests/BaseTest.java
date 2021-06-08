@@ -6,6 +6,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 import static straightWithoutBdd.utils.DriverInitializer.setBrowser;
 
 public class BaseTest implements Loggable {
@@ -14,6 +16,7 @@ public class BaseTest implements Loggable {
     @BeforeTest
     public void setup() {
         driver = setBrowser("chrome");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         if (driver != null) {
             driver.manage().window().maximize();
         }

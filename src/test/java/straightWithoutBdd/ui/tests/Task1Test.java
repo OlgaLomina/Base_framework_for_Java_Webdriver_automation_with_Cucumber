@@ -5,9 +5,10 @@ import org.testng.annotations.Test;
 import straightWithoutBdd.ui.pages.GoogleMaps;
 
 public class Task1Test extends BaseTest {
-    GoogleMaps googleMaps=new GoogleMaps(driver);
+
     @Test
     public void fasterWay() {
+        GoogleMaps googleMaps=new GoogleMaps(driver);
         driver.get("https://www.google.com/maps");// doesn't work too
 
         //googleMaps.open(); doesn't work (in example from class we open web page from BDD package
