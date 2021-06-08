@@ -8,10 +8,13 @@ public class GoogleMapsSearchTest extends BaseTest{
 
     @Test
     public void searchFastestRoute () {
+        String from = "San Jose";
+        String destination = "San Francisco";
+
         MapsSearchPage mapsSearchPage = new MapsSearchPage(driver);
         mapsSearchPage.navigateTo();
-        MapsRoutePage mapsRoutePage = mapsSearchPage.searchTo();
-        mapsRoutePage.searchFrom();
+        MapsRoutePage mapsRoutePage = mapsSearchPage.searchTo(destination);
+        mapsRoutePage.searchFrom(from);
         mapsRoutePage.validateResults();
 
     }

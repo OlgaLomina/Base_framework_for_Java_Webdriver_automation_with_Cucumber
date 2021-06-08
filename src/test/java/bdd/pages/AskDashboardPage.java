@@ -17,9 +17,9 @@ public class AskDashboardPage extends Page {
     @FindBy(xpath = "//mat-list/header/div/p")
     private WebElement role;
 
-    //@FindBy(css = "div > div.mat-list-text > h5")
-    @FindBy(css = "ac-side-menu > mat-list > a")
-    private List<WebElement> menuItems;
+    @FindBy(css = "div > div.mat-list-text > h5")
+    private List<WebElement> sidebarTitles;
+
 
     @FindBy(xpath = "//mat-list/mat-list-item/div")
     private WebElement logOutButton;
@@ -32,9 +32,11 @@ public class AskDashboardPage extends Page {
         return role.getText();
     }
 
-    public List<String> getMenuItems(){
+    public List<String> getSidebarTitles(){
+        waitForVisible(sidebarTitles.get(0));
+
         List<String> menuItemsList = new ArrayList<>();
-        for (WebElement el: menuItems){
+        for (WebElement el: sidebarTitles){
             menuItemsList.add(el.getText());
         }
         return menuItemsList;

@@ -29,8 +29,8 @@ public class MapsSearchPage extends BasePage{
         waitForVisible(searchInputLocatorTo);
     }
 
-    public MapsRoutePage searchTo(){
-        searchInputLocatorTo.sendKeys(endRoute);
+    public MapsRoutePage searchTo(String destinations){
+        searchInputLocatorTo.sendKeys(destinations);
         searchboxDirections.click();
         return new MapsRoutePage(driver);
     }

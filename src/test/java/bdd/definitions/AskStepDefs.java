@@ -6,9 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class AskStepDefs {
 
@@ -26,8 +24,7 @@ public class AskStepDefs {
 
     @Then("I validate dashboard info")
     public void iValidateDashboardInfo() {
-        //, "Log Out"
-        Assert.assertEquals(askDashBoard.getMenuItems(), Arrays.asList("Home", "Submissions", "Assignments", "Quizzes", "User's Management", "Settings"));
+        Assert.assertEquals(askDashBoard.getSidebarTitles(), Arrays.asList("Home", "Submissions", "Assignments", "Quizzes", "User's Management", "Settings", "Log Out"));
 
         Assert.assertEquals(askDashBoard.getUserName(), "Olga Wilson");
         Assert.assertEquals(askDashBoard.getUserRole(), "TEACHER");

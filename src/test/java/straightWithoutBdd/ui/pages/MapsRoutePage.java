@@ -14,8 +14,6 @@ public class MapsRoutePage extends MapsSearchPage{
         super(driver);
     }
 
-    private String beginRoute = "San Diego CA";
-
     @FindBy(xpath = "//*[@id='sb_ifc51']/input")
     private WebElement searchInputLocatorFrom;
 
@@ -37,7 +35,7 @@ public class MapsRoutePage extends MapsSearchPage{
         return routesSet;
     }
 
-    public void searchFrom(){
+    public void searchFrom(String beginRoute){
         waitForVisible(searchInputLocatorFrom);
         searchInputLocatorFrom.sendKeys(beginRoute);
         searchInputLocatorFrom.sendKeys(Keys.ENTER);
