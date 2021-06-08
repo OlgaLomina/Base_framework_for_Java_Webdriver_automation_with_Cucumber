@@ -2,12 +2,15 @@ package bdd.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import java.util.Map;
+import static bdd.support.TestContext.getData;
 
 public class AssessmentControlLoginPage extends Page{
+
     public AssessmentControlLoginPage() {
         url = "http://ask-stage.portnov.com/#/home";
-
     }
+
     @FindBy(xpath = "//*[@placeholder='Email *']")
     private WebElement emailField;
 
@@ -17,17 +20,10 @@ public class AssessmentControlLoginPage extends Page{
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement submitButton;
 
-    private String password="12345Abc";
-    private String login="teacher3@gmail.com";
-
-    public void loginAsATeacher (){
-        emailField.sendKeys(login);
-        passwordField.sendKeys(password);
+    public void typeCredentials (String role){
+        Map<String, String> customer=getData(role);
+        emailField.sendKeys(customer.get("email"));
+        passwordField.sendKeys(customer.get("password"));
         submitButton.click();
     }
-
-
-
-
-
 }
