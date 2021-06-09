@@ -1,12 +1,15 @@
 package bdd.pages;
 
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import static bdd.support.TestContext.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class AskStage extends Page {
 
@@ -40,25 +43,20 @@ public class AskStage extends Page {
         getDriver().navigate().to(url);
     }
 
-    public void iLoginWithCredentials2(String role)throws Exception {
+    public void iLoginWithCredentials2(String role) {
 
-//        Map<String, String> user = getData(role);
-//        emailField.sendKeys(user.get("email"));
-//        passwordField.sendKeys("password");
-//        Thread.sleep(2000);
-//        signInButton.click();
-//        Thread.sleep(2000);
-
-        emailField.sendKeys("teacher4@gmail.com");
-        passwordField.sendKeys("12345Abc");
+        Map<String, String> user = getData(role);
+        emailField.sendKeys(user.get("email"));
+        passwordField.sendKeys(user.get("password"));
         signInButton.click();
-        Thread.sleep(2000);
+
     }
 
-    public void iValidateTheUserInfo2() {
+    public void iValidateTheUserInfo2(String name, String role) {
+        getWait().until(visibilityOf(userInfo));
         String info = userInfo.getText();
-        assertThat(info.contains("Mark Johnson")).isTrue();
-        assertThat(info.contains("TEACHER")).isTrue();
+        assertThat(info.contains(name)).isTrue();
+        assertThat(info.contains(role)).isTrue();
 
     }
 

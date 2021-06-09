@@ -19,13 +19,13 @@ public class Task2AskStepDefs {
     }
 
     @When("I login with credentials as {string}")
-    public void iLoginWithCredentials(String role)throws Exception {
-        askStage.iLoginWithCredentials2("teacher");
+    public void iLoginWithCredentials(String role)throws Exception{
+        askStage.iLoginWithCredentials2(role);
     }
 
-    @Then("I validate the user info")
-    public void iValidateTheUserInfo() {
-        askStage.iValidateTheUserInfo2();
+    @Then("I validate the user {string} and {string}")
+    public void iValidateTheUserAnd(String arg0, String arg1) throws Exception{
+        askStage.iValidateTheUserInfo2("Iryna Valadimirova", "TEACHER");
     }
 
     @And("I validate list of menu items")
@@ -39,7 +39,6 @@ public class Task2AskStepDefs {
     public void iLogoutFromThePage() {
         askStage.iLogoutFromThePage2();
     }
-
 
 
 

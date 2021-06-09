@@ -70,9 +70,8 @@ public class GoogleMap extends Page {
                     fastestRoute = currentRoute;
                 }
             }
-            System.out.println(fastestRoute);
+
         distance = String.valueOf(fastestRoute);
-        System.out.print(distance);
         return distance;
 
     }
