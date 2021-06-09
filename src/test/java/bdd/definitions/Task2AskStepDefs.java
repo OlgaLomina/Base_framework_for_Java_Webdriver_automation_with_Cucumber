@@ -19,12 +19,12 @@ public class Task2AskStepDefs {
     }
 
     @When("I login with credentials as {string}")
-    public void iLoginWithCredentials(String role)throws Exception{
+    public void iLoginWithCredentials(String role){
         askStage.iLoginWithCredentials2(role);
     }
 
     @Then("I validate the user {string} and {string}")
-    public void iValidateTheUserAnd(String arg0, String arg1) throws Exception{
+    public void iValidateTheUserAnd(String arg0, String arg1){
         askStage.iValidateTheUserInfo2("Iryna Valadimirova", "TEACHER");
     }
 
