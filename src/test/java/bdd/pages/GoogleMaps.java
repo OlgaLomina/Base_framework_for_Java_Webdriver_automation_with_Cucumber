@@ -25,9 +25,12 @@ public class GoogleMaps extends Page {
     @FindBy(xpath = "//div[@class='section-directions-trip-description']")
     private List<WebElement> routes;
 
+    @FindBy(xpath = "//div[contains(@class,'distance')]")
+    private List<WebElement> distances;
+
     public void typeDestination(String dest) {
         searchField.sendKeys(dest);
-        getActions().sendKeys(Keys.ENTER);
+        getActions().sendKeys(Keys.ENTER).perform();
     }
 
     public void clickDirectionButton() {
@@ -36,7 +39,7 @@ public class GoogleMaps extends Page {
 
     public void typeStartingPoint(String start) {
         startingPoint.sendKeys(start);
-        getActions().sendKeys(Keys.ENTER);
+        getActions().sendKeys(Keys.ENTER).perform();
     }
 
     public void waitDirections() {
@@ -53,7 +56,8 @@ public class GoogleMaps extends Page {
         return false;
     }
 
-    public boolean isShortestRoute(String shortestDistance) {
-        return routes.get(0).getText().contains(shortestDistance);
+    public boolean isShortestRoute(int shortestDistance) {
+        String[] distanceParts = distances.get(0).getText().split(" ");
+        return shortestDistance >= Integer.parseInt(distanceParts[0]);
     }
 }

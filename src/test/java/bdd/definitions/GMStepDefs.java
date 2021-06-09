@@ -38,8 +38,8 @@ public class GMStepDefs {
         assertThat(maps.isRouteExist(bestRoute)).isTrue();
     }
 
-    @And("I confirm that distance equals {string} miles")
-    public void iConfirmThatDistanceEqualsMiles(String distance) {
+    @And("I confirm that distance equals {int} miles")
+    public void iConfirmThatDistanceEqualsMiles(int distance) {
         assertThat(maps.isShortestRoute(distance)).isTrue();
     }
 }

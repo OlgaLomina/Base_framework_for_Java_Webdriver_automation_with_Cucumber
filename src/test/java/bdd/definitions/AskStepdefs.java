@@ -30,4 +30,9 @@ public class AskStepdefs {
     public void iLogout() {
         askDashboard.logOut();
     }
+
+    @When("I login From File")
+    public void iLoginFromFile() {
+        askLogin.login();
+    }
 }
