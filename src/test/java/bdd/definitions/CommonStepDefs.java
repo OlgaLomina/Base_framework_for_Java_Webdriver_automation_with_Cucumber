@@ -5,9 +5,6 @@ import bdd.pages.Task1Page;
 import io.cucumber.java.en.Given;
 import bdd.pages.QuoteForm;
 
-
-
-
 public class CommonStepDefs {
 
     @Given("I open {string} page")
