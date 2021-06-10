@@ -1,10 +1,17 @@
 package codingTasks;
 
+import io.cucumber.java.lu.a;
+
+import java.util.Arrays;
+
 public class FizzBuzz {
 
 
     public static void main(String[] args) {
-        fizzBuzz(20);
+        //fizzBuzz(20);
+        int[] a = new int[]{-3,0,3,90};
+        int b = 0;
+        System.out.println(Arrays.toString(new FinSum().twoSum(a, b)));
     }
 
 
@@ -22,5 +29,9 @@ public class FizzBuzz {
             }
         }
         System.out.println();
+
     }
+
+
+
 }
