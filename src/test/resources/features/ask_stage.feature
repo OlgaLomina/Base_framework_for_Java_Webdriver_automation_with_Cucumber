@@ -2,10 +2,16 @@
   Feature: Test Login
 
     @Test
-    Scenario: Validate login and password
+    Scenario Outline: Validate login and password
       Given I open "stage" page
-      When I login with "teacher3@gmail.com" and "12345Abc"
-      Then I validate dashboard info
+      When I login with <user_id> and <password_id>
+      Then I validate dashboard info <user_name> <role_name>
+
+
+      Examples:
+        | user_id              | password_id | user_name      | role_name |
+        | "teacher1@gmail.com" | "12345Abc"  | "Anna Pavlova" | "TEACHER" |
+        | "teacher2@gmail.com" | "12345Abc"  | "Diana Brown"  | "TEACHER" |
 
 
 #    Steps to automate:

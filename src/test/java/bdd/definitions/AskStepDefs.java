@@ -22,12 +22,12 @@ public class AskStepDefs {
         askLogin.login(email, password);
     }
 
-    @Then("I validate dashboard info")
-    public void iValidateDashboardInfo() {
+    @Then("I validate dashboard info {string} {string}")
+    public void iValidateDashboardInfo(String userName, String roleName) {
         Assert.assertEquals(askDashBoard.getSidebarTitles(), Arrays.asList("Home", "Submissions", "Assignments", "Quizzes", "User's Management", "Settings", "Log Out"));
 
-        Assert.assertEquals(askDashBoard.getUserName(), "Olga Wilson");
-        Assert.assertEquals(askDashBoard.getUserRole(), "TEACHER");
+        Assert.assertEquals(askDashBoard.getUserName(), userName);
+        Assert.assertEquals(askDashBoard.getUserRole(), roleName);
 
     }
 }
