@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "token"
 })
 
-public class Example {
+public class UserResponse {
 
     /**
      * 

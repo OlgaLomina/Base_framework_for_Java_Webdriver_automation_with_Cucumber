@@ -7,7 +7,7 @@ import org.everit.json.schema.Schema;
 import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import straightWithoutBdd.api.services.pojo.Example;
+import straightWithoutBdd.api.services.pojo.UserResponse;
 import utils.Loggable;
 
 import java.io.FileInputStream;
@@ -60,7 +60,7 @@ public class AuthService implements Loggable {
 
 
         // POJO EXAMPLE
-        var userResponse = response.getBody().as(Example.class);
+        var userResponse = response.getBody().as(UserResponse.class);
         getLogger().info("POJO " + userResponse.getUser().getRole());
 
         // Validate Schema
