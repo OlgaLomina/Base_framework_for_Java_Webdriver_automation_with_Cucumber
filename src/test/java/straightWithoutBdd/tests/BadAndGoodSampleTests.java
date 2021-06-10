@@ -1,11 +1,11 @@
-package straightWithoutBdd.ui.tests;
+package straightWithoutBdd.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import straightWithoutBdd.ui.pages.IssuMainJournalPage;
+import straightWithoutBdd.pages.IssuMainJournalPage;
 
 import java.util.List;
 

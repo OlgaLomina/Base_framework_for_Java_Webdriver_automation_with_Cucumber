@@ -1,4 +1,4 @@
-package straightWithoutBdd.ui.pages;
+package straightWithoutBdd.pages;
 
 import utils.Loggable;
 import org.openqa.selenium.*;

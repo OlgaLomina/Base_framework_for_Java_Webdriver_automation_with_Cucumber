@@ -11,7 +11,8 @@ import org.junit.runner.RunWith;
         plugin = {"pretty", "html:target/cucumber"},
         features = "src/test/resources/features",
         glue = {"bdd/definitions", "bdd/support"}
-//        tags = "@quote" // same as VM option -Dcucumber.options="--tags @quote"
+//        tags = "@quote"
+        // same as VM option -Dcucumber.options="--tags @quote"
 )
 public class TestRunner {
     @BeforeClass

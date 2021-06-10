@@ -1,7 +1,7 @@
 !!support.Config
 browser: chrome
 testEnv: local
-isHeadless: true
+isHeadless: false
 implicitTimeout: 3
 pageLoadTimeout: 300
 explicitTimeout: 5

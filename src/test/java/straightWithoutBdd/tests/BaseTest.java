@@ -1,4 +1,4 @@
-package straightWithoutBdd.ui.tests;
+package straightWithoutBdd.tests;
 
 import utils.Loggable;
 import utils.TestContext;
@@ -11,13 +11,16 @@ import static utils.TestContext.getDriver;
 
 public class BaseTest implements Loggable {
 
+
     @BeforeTest
-    public void setup() {
+    public void setup()  {
         TestContext.initialize();
         TestContext.setTimestamp();
         getDriver().manage().timeouts().pageLoadTimeout(getConfig().pageLoadTimeout, TimeUnit.SECONDS);
         getDriver().manage().timeouts().implicitlyWait(getConfig().implicitTimeout, TimeUnit.SECONDS);
         getDriver().manage().deleteAllCookies();
+
+
     }
 
 

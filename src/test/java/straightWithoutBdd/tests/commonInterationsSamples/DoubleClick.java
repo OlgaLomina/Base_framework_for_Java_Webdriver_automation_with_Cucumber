@@ -1,10 +1,10 @@
-package straightWithoutBdd.ui.tests.commonInterationsSamples;
+package straightWithoutBdd.tests.commonInterationsSamples;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
-import straightWithoutBdd.ui.tests.BaseTest;
+import straightWithoutBdd.tests.BaseTest;
 
 import static utils.TestContext.getDriver;
 
