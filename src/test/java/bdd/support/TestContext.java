@@ -106,6 +106,19 @@ public class TestContext {
         }
     }
 
+    //by Slava
+    public static Map<String,String> getDataFromFile(String role){
+        try{
+           String path = System.getProperty("user.dir") + "/src/test/resources/data/"+role+".yml";
+            File file = new File(path);
+            InputStream stream = new FileInputStream(file);
+            Yaml yaml = new Yaml();
+            return yaml.load(stream);
+        } catch (FileNotFoundException e){
+            throw new Error(e);
+        }
+    }
+
     public static Config getConfig() {
         return new Yaml().loadAs(getStream("config", "yml"), Config.class);
     }
