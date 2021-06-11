@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.testng.Assert;
 
 import java.util.List;
+import java.util.Locale;
 
 import static utils.TestContext.getDriver;
 
@@ -27,7 +28,9 @@ public class IssuStepDefs {
     public void iVerifyViaRESTNewPositionIsInTheList(String testInput) {
         List<String> titles = issuPage.getResultTitles();
         for (String e: titles){
-        Assert.assertTrue(e.contains(testInput),
+            String actual = e.toLowerCase();
+            String expected = testInput.toLowerCase();
+        Assert.assertTrue(actual.contains(expected),
                 "Expected contains " + testInput + " , actual result: " + e);
     }
     }

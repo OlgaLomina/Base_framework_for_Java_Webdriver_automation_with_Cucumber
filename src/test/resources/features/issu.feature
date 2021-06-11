@@ -10,5 +10,5 @@ Feature: Test Search
     Examples:
       | search_input          | expected_result       |
       | "National Geographic" | "National Geographic" |
-      | "Forbes"              | "Other"               |
-      | "Aviation"            | "Different"           |
+      | "forbes"              | "forbes"              |
+      | "History"             | "History"             |
