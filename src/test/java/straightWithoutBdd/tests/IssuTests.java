@@ -24,7 +24,7 @@ public class IssuTests extends BaseTest {
 
         return new Object[][]{
                 {"National Geographic", "National Geographic"},
-                {"Forbes", "FORBES"}
+                {"Forbes", "Should fail"}
         };
     }
 
