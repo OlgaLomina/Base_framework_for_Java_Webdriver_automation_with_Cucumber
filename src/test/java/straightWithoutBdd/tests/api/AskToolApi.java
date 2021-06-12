@@ -10,6 +10,8 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import straightWithoutBdd.api.services.AuthService;
+import straightWithoutBdd.api.services.NewQuiz;
 import utils.Loggable;
 
 import java.io.FileInputStream;
@@ -31,27 +33,21 @@ public class AskToolApi implements Loggable {
         credentials.put("password", "12345Abc");
 
 
-        // Auth Service
-        RequestSpecification request = RestAssured.given()
-                .baseUri("http://ask-stage.portnov.com")
-                .basePath("/api/v1/sign-in")
-                .header(CONTENT_TYPE, JSON)
-                .body(credentials);
-
-        Response response = request.post();
-        getLogger().info("Response " + response.statusCode());
-        getLogger().info("Response " + response.getBody().asString());
-        String responseBody = response.getBody().asString();
-
-
-        Assert.assertEquals(response.statusCode(), 200);
-
-        // Schema validation
-        InputStream inputStream = new FileInputStream("src/test/java/straightWithoutBdd/api/Auth.json");
-        JSONObject rawSchema = new JSONObject(new JSONTokener(inputStream));
-        Schema schema = SchemaLoader.load(rawSchema);
-        schema.validate(new JSONObject(responseBody));
+        AuthService authService = new AuthService();
+        authService.login(credentials);
     }
 
+    @Test(description = "create new quiz")
+    public void newQuiz() throws FileNotFoundException {
+        // Test data
+        HashMap<String, String> credentials = new HashMap<>();
+        credentials.put("email", "teacher5@gmail.com");
+        credentials.put("password", "12345Abc");
+
+
+        NewQuiz nq = new NewQuiz();
+        Response response = nq.newQuiz(new AuthService().login(credentials));
+        Assert.assertEquals(response.statusCode(), 200);
+    }
 
 }

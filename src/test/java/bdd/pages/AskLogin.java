@@ -3,7 +3,7 @@ package bdd.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static bdd.support.TestContext.getData;
+import static utils.TestContext.getData;
 
 public class AskLogin extends Page {
     public AskLogin() {
