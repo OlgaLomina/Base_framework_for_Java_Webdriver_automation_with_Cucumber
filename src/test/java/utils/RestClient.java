@@ -1,4 +1,4 @@
-package bdd.support;
+package utils;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -6,7 +6,7 @@ import io.restassured.specification.RequestSpecification;
 import java.util.List;
 import java.util.Map;
 
-import static bdd.support.TestContext.setTestData;
+import static utils.TestContext.setTestData;
 
 public class RestClient implements Loggable {
 
