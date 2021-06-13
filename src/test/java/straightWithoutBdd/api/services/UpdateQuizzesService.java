@@ -18,7 +18,7 @@ import java.util.Map;
 
 import static bdd.support.TestContext.getData;
 
-public class CreateQuizzesService implements Loggable {
+public class UpdateQuizzesService  implements Loggable {
     String baseUri = "http://ask-stage.portnov.com";
     String basePath = "/api/v1/quiz";
     private static String loginToken;
@@ -27,16 +27,16 @@ public class CreateQuizzesService implements Loggable {
     public static final String AUTH = "Authorization";
     private Integer quizId;
 
-    public Response createQuizzes(String token) throws FileNotFoundException {
-        getLogger().info("Loggin in with token " + token);
+    public Response updateQuiz(Integer quizId) throws FileNotFoundException {
+        getLogger().info("Loggin in with token " + quizId);
 
-        //Auth Service
+         //Auth Service
         RequestSpecification request = RestAssured.given()
                 .log().all()
                 .baseUri(baseUri)
                 .basePath(basePath)
                 .header(CONTENT_TYPE, JSON)
-                .header(AUTH, token)
+                .header(AUTH, quizId)
                 .body(getData("newQuiz_example"));
 
         // execute
@@ -70,6 +70,4 @@ public class CreateQuizzesService implements Loggable {
         getLogger().info("RESPONSE BODY " + responseBody);
 
         return response;
-    }
-
 }
