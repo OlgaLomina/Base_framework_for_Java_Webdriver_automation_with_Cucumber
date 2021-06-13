@@ -21,26 +21,26 @@ import static bdd.support.TestContext.getData;
 public class UpdateQuizzesService  implements Loggable {
     String baseUri = "http://ask-stage.portnov.com";
     String basePath = "/api/v1/quiz";
-    private static String loginToken;
     public static final String CONTENT_TYPE = "Content-Type";
     public static final String JSON = "application/json";
     public static final String AUTH = "Authorization";
-    private Integer quizId;
+    private Integer quizName;
 
-    public Response updateQuiz(Integer quizId) throws FileNotFoundException {
-        getLogger().info("Loggin in with token " + quizId);
+    public Response updateQuiz(String token, Integer quizId) throws FileNotFoundException {
+        getLogger().info("Update quiz id " + quizId);
 
-         //Auth Service
+        //Auth Service
         RequestSpecification request = RestAssured.given()
                 .log().all()
                 .baseUri(baseUri)
                 .basePath(basePath)
                 .header(CONTENT_TYPE, JSON)
-                .header(AUTH, quizId)
-                .body(getData("newQuiz_example"));
+                .header(AUTH, token)
+                .body(getData("updateQuiz"));
+
 
         // execute
-        Response response = request.when().post();
+        Response response = request.when().put();
 
         getLogger().info("Response " + response.statusCode());
         getLogger().info("Response " + response.getBody().asString());
@@ -53,8 +53,8 @@ public class UpdateQuizzesService  implements Loggable {
                 .jsonPath()
                 .getMap("");
 
-        quizId = (Integer) result.get("id");
-        getLogger().info(quizId);
+        quizName = (Integer) result.get("name");
+        getLogger().info(quizName);
 
         // POJO EXAMPLE
         var createQuizResponse = response.getBody().as(CreateQuizResponse.class);
@@ -70,4 +70,5 @@ public class UpdateQuizzesService  implements Loggable {
         getLogger().info("RESPONSE BODY " + responseBody);
 
         return response;
+    }
 }
