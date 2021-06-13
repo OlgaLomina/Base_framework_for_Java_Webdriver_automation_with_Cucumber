@@ -1,6 +1,5 @@
 package straightWithoutBdd.api.services;
 
-
 import bdd.support.Loggable;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -10,39 +9,39 @@ import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.junit.Assert;
-import org.testng.annotations.Test;
-import straightWithoutBdd.api.services.pojo.UserResponse;
+import straightWithoutBdd.api.services.pojo.CreateQuizResponse;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Map;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
-import static org.hamcrest.Matchers.lessThan;
-import static bdd.support.RestClient.CONTENT_TYPE;
-import static bdd.support.RestClient.JSON;
 
-public class AuthorizationService implements Loggable {
-    // http://ask-stage.portnov.com/api/v1/sign-in
+import static bdd.support.TestContext.getData;
+
+public class CreateQuizzesService implements Loggable {
     String baseUri = "http://ask-stage.portnov.com";
-    String basePath = "/api/v1/sign-in";
+    String basePath = "/api/v1/quiz";
     private static String loginToken;
+    public static final String CONTENT_TYPE = "Content-Type";
+    public static final String JSON = "application/json";
+    public static final String AUTH = "Authorization";
+    private Integer quizId;
 
-    @Test(description = "login and get token")
-    public String login(Map<String, String> user) throws FileNotFoundException {
-        getLogger().info("Loggin in user " + user.get("email"));
+    public Response createQuizzes(String token) throws FileNotFoundException {
+        getLogger().info("Loggin in with token " + token);
 
         //Auth Service
+        //Auth Service
         RequestSpecification request = RestAssured.given()
+                .log().all()
                 .baseUri(baseUri)
                 .basePath(basePath)
                 .header(CONTENT_TYPE, JSON)
-                .body(user);
+                .header(AUTH, token)
+                .body(getData("newQuiz_example1"));
 
         // execute
         Response response = request.when().post();
-
-
 
         getLogger().info("Response " + response.statusCode());
         getLogger().info("Response " + response.getBody().asString());
@@ -55,23 +54,23 @@ public class AuthorizationService implements Loggable {
                 .jsonPath()
                 .getMap("");
 
-        loginToken = "Bearer " + result.get("token");
-        getLogger().info(loginToken);
+        quizId = (Integer) result.get("id");
+        getLogger().info(quizId);
 
         // POJO EXAMPLE
-        var userResponse = response.getBody().as(UserResponse.class);
-        getLogger().info("POJO " + userResponse.getUser().getRole());
+        var createQuizResponse = response.getBody().as(CreateQuizResponse.class);
+        getLogger().info("POJO " + createQuizResponse.getId());
 
         // Validate Schema
         var responseBody = response.getBody().asString();
-        InputStream inputStream = new FileInputStream("src/test/java/straightWithoutBdd/api/services/schema/Auth.json");
+        InputStream inputStream = new FileInputStream("src/test/java/straightWithoutBdd/api/services/schema/CreateQuizz.json");
         JSONObject rawSchema = new JSONObject(new JSONTokener(inputStream));
         Schema schema = SchemaLoader.load(rawSchema);
         schema.validate(new JSONObject(responseBody));
 
         getLogger().info("RESPONSE BODY " + responseBody);
 
-        return loginToken;
+        return response;
     }
 
 }
