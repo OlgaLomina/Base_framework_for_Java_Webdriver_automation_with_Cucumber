@@ -83,8 +83,8 @@ public class AskToolApi implements Loggable {
     @Test(description = "change name")
     public void changeName() throws FileNotFoundException {
         HashMap<String, String> credentials = new HashMap<>();
-        credentials.put("email", "4hocinelosane0@rtfs.site");
-        credentials.put("password", "12345");
+        credentials.put("email", "teacher1@gmail.com");
+        credentials.put("password", "12345Abc");
         String token = new AuthService().login(credentials);
         new AskChangeName().changeName("New Name for Artur", 12463, token);
     }
