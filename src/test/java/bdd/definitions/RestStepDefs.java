@@ -3,12 +3,12 @@ package bdd.definitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import bdd.support.RestClient;
+import utils.RestClient;
 import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static bdd.support.TestContext.*;
+import static utils.TestContext.*;
 
 public class RestStepDefs {
 

@@ -5,8 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
-
-import static bdd.support.TestContext.getActions;
+import static utils.TestContext.getActions;
 
 public class GoogleMaps extends Page {
     public GoogleMaps() {

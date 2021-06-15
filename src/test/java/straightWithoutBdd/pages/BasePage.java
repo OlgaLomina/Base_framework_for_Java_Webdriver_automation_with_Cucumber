@@ -1,6 +1,6 @@
-package straightWithoutBdd.ui.pages;
+package straightWithoutBdd.pages;
 
-import bdd.support.Loggable;
+import utils.Loggable;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogEntries;
@@ -14,19 +14,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.logging.Level;
 
+import static utils.TestContext.getDriver;
+
 
 public class BasePage implements Loggable {
     // fields
     protected String url;
-    public WebDriver driver;
 
     // constructor
-    public BasePage(WebDriver driver) {
-        PageFactory.initElements(this.driver=driver, this);
+    public BasePage() {
+        PageFactory.initElements(getDriver(), this);
     }
 
     public void open() {
-        driver.get(url);
+        getDriver().get(url);
     }
 
     public WebDriverWait getWait() {
@@ -34,23 +35,23 @@ public class BasePage implements Loggable {
     }
 
     public  WebDriverWait getWait(int timeout) {
-        return new WebDriverWait(driver, timeout);
+        return new WebDriverWait(getDriver(), timeout);
     }
 
     public Actions getActions() {
-        return new Actions(driver);
+        return new Actions(getDriver());
     }
 
     public JavascriptExecutor getExecutor() {
-        return (JavascriptExecutor) driver;
+        return (JavascriptExecutor) getDriver();
     }
 
     public void refresh() {
-        driver.navigate().refresh();
+        getDriver().navigate().refresh();
     }
 
     public boolean areErrorsPresent() {
-        LogEntries entries = driver.manage().logs().get(LogType.BROWSER);
+        LogEntries entries = getDriver().manage().logs().get(LogType.BROWSER);
         for (LogEntry entry : entries) {
             if (entry.getLevel().equals(Level.SEVERE)) {
                 return true;
@@ -60,11 +61,11 @@ public class BasePage implements Loggable {
     }
 
     protected WebElement getByXpath(String xpath) {
-        return driver.findElement(By.xpath(xpath));
+        return getDriver().findElement(By.xpath(xpath));
     }
 
     protected List<WebElement> getAllByXpath(String xpath) {
-        return driver.findElements(By.xpath(xpath));
+        return getDriver().findElements(By.xpath(xpath));
     }
 
     protected void mouseOver(WebElement element) {

@@ -9,7 +9,7 @@ import bdd.pages.QuoteResult;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static bdd.support.TestContext.getData;
+import static utils.TestContext.getData;
 
 public class QuoteStepDefs {
 
