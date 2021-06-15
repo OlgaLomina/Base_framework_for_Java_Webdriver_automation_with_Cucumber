@@ -1,3 +1,4 @@
+{
   "id":713,
   "name":"Update_quiz_example",
   "totalScore":15,
@@ -14,9 +15,9 @@
       "question":"5+4*2",
       "score":5,
       "options":[
-          "13",
-          "18",
-          "0"
+        "13",
+        "18",
+        "0"
       ],
       "answer":0,
       "hasOtherOption":null
@@ -26,18 +27,19 @@
       "question":"What are your favorive colors?",
       "score":5,
       "options":[
-          "black",
-          "white",
-          "red",
-          "green"
+        "black",
+        "white",
+        "red",
+        "green"
       ],
       "answers":[
-          1,
-          2,
-          3
+        1,
+        2,
+        3
       ],
       "hasOtherOption":true
     }
   ],
   "createdAt":null,
   "updatedAt":null
+}

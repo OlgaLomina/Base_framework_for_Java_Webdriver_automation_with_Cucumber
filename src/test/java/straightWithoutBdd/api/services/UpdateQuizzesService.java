@@ -26,7 +26,7 @@ public class UpdateQuizzesService  implements Loggable {
     public static final String AUTH = "Authorization";
     private Integer quizName;
 
-    public Response updateQuiz(String token, Integer quizId) throws FileNotFoundException {
+    public Response updateQuiz(String token, String quizId) throws FileNotFoundException {
         getLogger().info("Update quiz id " + quizId);
 
         //Auth Service
@@ -36,7 +36,51 @@ public class UpdateQuizzesService  implements Loggable {
                 .basePath(basePath)
                 .header(CONTENT_TYPE, JSON)
                 .header(AUTH, token)
-                .body(getData("updateQuiz"));
+                .body("{\n" +
+                        "  \"id\":" + quizId +",\n" +
+                        "  \"name\":\"Update_quiz_example\",\n" +
+                        "  \"totalScore\":15,\n" +
+                        "  \"passingPercentage\":75,\n" +
+                        "  \"showStopperQuestion\":0,\n" +
+                        "  \"questions\":[\n" +
+                        "    {\n" +
+                        "      \"type\":\"TEXTUAL\",\n" +
+                        "      \"question\":\"What is the capital of USA?\",\n" +
+                        "      \"score\":5\n" +
+                        "    },\n" +
+                        "    {\n" +
+                        "      \"type\":\"SINGLE_CHOICE\",\n" +
+                        "      \"question\":\"5+4*2\",\n" +
+                        "      \"score\":5,\n" +
+                        "      \"options\":[\n" +
+                        "        \"13\",\n" +
+                        "        \"18\",\n" +
+                        "        \"0\"\n" +
+                        "      ],\n" +
+                        "      \"answer\":0,\n" +
+                        "      \"hasOtherOption\":null\n" +
+                        "    },\n" +
+                        "    {\n" +
+                        "      \"type\":\"MULTIPLE_CHOICE\",\n" +
+                        "      \"question\":\"What are your favorive colors?\",\n" +
+                        "      \"score\":5,\n" +
+                        "      \"options\":[\n" +
+                        "        \"black\",\n" +
+                        "        \"white\",\n" +
+                        "        \"red\",\n" +
+                        "        \"green\"\n" +
+                        "      ],\n" +
+                        "      \"answers\":[\n" +
+                        "        1,\n" +
+                        "        2,\n" +
+                        "        3\n" +
+                        "      ],\n" +
+                        "      \"hasOtherOption\":true\n" +
+                        "    }\n" +
+                        "  ],\n" +
+                        "  \"createdAt\":null,\n" +
+                        "  \"updatedAt\":null\n" +
+                        "}");
 
 
         // execute
