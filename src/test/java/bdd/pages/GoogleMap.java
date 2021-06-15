@@ -1,6 +1,7 @@
 package bdd.pages;
 
 
+import bdd.support.Loggable;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -10,7 +11,7 @@ import static bdd.support.TestContext.getDriver;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class GoogleMap extends Page {
+public class GoogleMap extends Page implements Loggable {
 
     String  distance = "";
 
@@ -56,8 +57,7 @@ public class GoogleMap extends Page {
         destinationField.sendKeys(address2);
     }
 
-    public void iClickOnSearchRout2() {
-        searchRouteButton.click();
+    public void iClickOnSearchRout2() { searchRouteButton.click();
     }
 
 
@@ -72,6 +72,7 @@ public class GoogleMap extends Page {
             }
 
         distance = String.valueOf(fastestRoute);
+        getLogger().info("Fastest route:  " + distance);
         return distance;
 
     }
