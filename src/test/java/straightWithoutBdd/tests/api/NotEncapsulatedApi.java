@@ -20,14 +20,14 @@ import java.util.HashMap;
 import static utils.RestClient.CONTENT_TYPE;
 import static utils.RestClient.JSON;
 
-public class AskToolApi implements Loggable {
+public class NotEncapsulatedApi implements Loggable {
     // http://ask-stage.portnov.com/api/v1/sign-in
 
     @Test(description = "")
     public void login() throws FileNotFoundException {
         // Test data
         HashMap<String, String> credentials = new HashMap<>();
-        credentials.put("email", "teacher5@gmail.com");
+        credentials.put("email", "teacher4@gmail.com");
         credentials.put("password", "12345Abc");
 
 

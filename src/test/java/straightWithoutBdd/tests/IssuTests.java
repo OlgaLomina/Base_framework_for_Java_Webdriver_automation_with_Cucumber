@@ -23,8 +23,11 @@ public class IssuTests extends BaseTest {
         Map<String, String> searchData = getData("testfile");
 
         return new Object[][]{
-                {"National Geographic", "National Geographic"},
-                {"webinar", "webinar"}
+//                {"National Geographic", "National Geographic"},
+//                {"National Geographic", "National Geographic"},
+//                {"National Geographic", "National Geographic"},
+//                {"National Geographic", "National Geographic"},
+                {"National Geographic", "National Geographic"}
         };
     }
 

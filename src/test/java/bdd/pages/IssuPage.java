@@ -22,11 +22,11 @@ public class IssuPage extends Page {
     @FindBy(css = "div.ih-Search-overlayInner > form > div > input")
     private WebElement searchInput;
 
-    @FindBy(css = "div.MetaBar__SearchTerm > p")
-    private WebElement resultsBar;
-
-    @FindBy(css = "div.sc-15dtij-6.ibabWW > a > h4")
+    @FindBy(css = "div.sc-1839ach-6.jqbSfy > a > h4")
     private List<WebElement> titles;
+
+    @FindBy(css = "div.sc-1mdwg0t-2.ekpwST > p")
+    private WebElement resultWord;
 
     public void searchWithText(String searchText) {
         waitForVisible(searchInput);
@@ -36,7 +36,7 @@ public class IssuPage extends Page {
     }
 
     public List<String> getResultTitles() {
-        waitForVisible(resultsBar);
+        waitForVisible(resultWord);
         waitForVisible(titles.get(0));
         List<String> list = new ArrayList<>();
         for (WebElement e : titles) {

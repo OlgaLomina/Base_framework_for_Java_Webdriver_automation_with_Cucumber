@@ -1,5 +1,5 @@
 @api
-Feature: Test Search
+Feature: API
 
   @api1
   Scenario: Validate sign in api

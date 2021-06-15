@@ -25,7 +25,7 @@ public class IssuStepDefs {
     }
 
     @Then("Verify that result set contains {string}")
-    public void iVerifyViaRESTNewPositionIsInTheList(String testInput) {
+    public void verifyResults(String testInput) {
         List<String> titles = issuPage.getResultTitles();
         for (String e: titles){
             String actual = e.toLowerCase();

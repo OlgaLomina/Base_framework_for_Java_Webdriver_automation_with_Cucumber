@@ -15,6 +15,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.yaml.snakeyaml.Yaml;
 
@@ -132,14 +133,18 @@ public class TestContext {
     }
 
     public static void initialize() {
-        initialize(getConfig().browser, getConfig().testEnv, getConfig().isHeadless);
+        try {
+            initialize(getConfig().browser, getConfig().testEnv, getConfig().isHeadless);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void teardown() {
         driver.quit();
     }
 
-    public static void initialize(String browser, String testEnv, boolean isHeadless) {
+    public static void initialize(String browser, String testEnv, boolean isHeadless) throws MalformedURLException {
         Dimension size = new Dimension(1920, 1080);
         Point position = new Point(0, 0);
         if (testEnv.equals("local")) {
@@ -190,6 +195,18 @@ public class TestContext {
                 case "ie":
                     WebDriverManager.iedriver().setup();
                     driver = new InternetExplorerDriver();
+                    break;
+
+                case "remote":
+                    MutableCapabilities sauceOptions = new MutableCapabilities();
+
+                    ChromeOptions browserOptions = new ChromeOptions();
+                    browserOptions.setExperimentalOption("w3c", true);
+                    browserOptions.setCapability("platformName", "macOS 10.15");
+                    browserOptions.setCapability("browserVersion", "90.0");
+                    browserOptions.setCapability("sauce:options", sauceOptions);
+                    driver = new RemoteWebDriver(
+                            new URL("https://oauth-vitaliifokine-69681:816e6dff-484f-4e62-a8dd-3c7fba9d55d0@ondemand.us-west-1.saucelabs.com:443/wd/hub"), browserOptions);
                     break;
                 default:
                     throw new RuntimeException("Driver is not implemented for: " + browser);

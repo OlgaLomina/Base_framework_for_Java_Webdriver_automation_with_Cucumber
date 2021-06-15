@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Bank Suite" thread-count="4" parallel="tests">
+    <test name="Launch">
+        <classes>
+            <class name="straightWithoutBdd.tests.api.PojoValidations" />
+        </classes>
+    </test>
+    <test name="Second test">
+        <classes>
+            <class name="straightWithoutBdd.tests.api.NotEncapsulatedApi" />
+        </classes>
+    </test>
+    <test name="Third test">
+        <classes>
+            <class name="straightWithoutBdd.tests.api.SchemaValidations" />
+        </classes>
+    </test>
+    <test name="Fourth Test">
+        <classes>
+            <class name="straightWithoutBdd.tests.api.BasicEncapsulation" />
+        </classes>
+    </test>
+</suite> <!-- Suite -->

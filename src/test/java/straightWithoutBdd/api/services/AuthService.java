@@ -28,26 +28,7 @@ public class AuthService implements Loggable {
     public static final String AUTH = "Authorization";
 
     public String login(Map<String, String> user) throws FileNotFoundException {
-
-
-        getLogger().info("Logging in user " + user.get("email"));
-        // prepare
-
-        RequestSpecification request = RestAssured.given()
-                .log().all()
-                .baseUri(baseUrl)
-                .basePath(path)
-                .header(CONTENT_TYPE, JSON)
-                .body(user);
-
-        // execute
-        Response response = request.when()
-                .post();
-
-        // validate time
-        response.then().log().all()
-                .time(lessThan(1000L));
-
+        Response response = getAuthResponse(user);
 
         // verify and extract data
         Map<String, Object> result = response.then()
@@ -61,10 +42,11 @@ public class AuthService implements Loggable {
 
         // POJO EXAMPLE
         var userResponse = response.getBody().as(UserResponse.class);
-        getLogger().info("POJO " + userResponse.getUser().getRole());
+        getLogger().info("POJO " + userResponse.getUser());
 
         // Validate Schema
         var responseBody = response.getBody().asString();
+        getLogger().info("BODY  " + responseBody);
         InputStream inputStream = new FileInputStream("src/test/java/straightWithoutBdd/api/services/schema/Auth.json");
         JSONObject rawSchema = new JSONObject(new JSONTokener(inputStream));
         Schema schema = SchemaLoader.load(rawSchema);
@@ -73,5 +55,20 @@ public class AuthService implements Loggable {
         getLogger().info("RESPONSE BODY " + responseBody);
 
         return loginToken;
+    }
+
+    public Response getAuthResponse(Map<String, String> user){
+        getLogger().info("Logging in user " + user.get("email"));
+        // prepare
+
+        RequestSpecification request = RestAssured.given()
+                .log().all()
+                .baseUri(baseUrl)
+                .basePath(path)
+                .header(CONTENT_TYPE, JSON)
+                .body(user);
+
+        // execute
+        return request.when().post();
     }
 }
