@@ -91,19 +91,6 @@ public class UpdateQuizzesService  implements Loggable {
 
         Assert.assertEquals(response.statusCode(), 200);
 
-        // verify and extract data
-        Map<String, Object> result = response.then()
-                .extract()
-                .jsonPath()
-                .getMap("");
-
-        quizName = (Integer) result.get("name");
-        getLogger().info(quizName);
-
-        // POJO EXAMPLE
-        var createQuizResponse = response.getBody().as(CreateQuizResponse.class);
-        getLogger().info("POJO " + createQuizResponse.getId());
-
         // Validate Schema
         var responseBody = response.getBody().asString();
         InputStream inputStream = new FileInputStream("src/test/java/straightWithoutBdd/api/services/schema/CreateQuizz.json");
