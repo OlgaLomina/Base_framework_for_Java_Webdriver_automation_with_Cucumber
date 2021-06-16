@@ -1,0 +1,27 @@
+id:
+name: Assignment Example Quiz 1
+totalScore: 10
+passingPercentage: 75
+showStopperQuestion:
+questions:
+  - type: MULTIPLE_CHOICE
+    question: Capital of Finland
+    score: 5
+    options:
+      - Helsinki
+      - Reykjavik
+    answers:
+      - 0
+    hasOtherOption: true
+  - type: MULTIPLE_CHOICE
+    question: Capital of California
+    score: 5
+    options:
+      - San Francisco
+      - Sacramento
+      - San Jose
+    answers:
+      - 1
+    hasOtherOption:
+createdAt:
+updatedAt:
