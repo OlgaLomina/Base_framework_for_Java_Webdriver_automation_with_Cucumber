@@ -10,6 +10,8 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import straightWithoutBdd.api.services.*;
+import straightWithoutBdd.api.services.pojo.NewQuizResponse;
 import utils.Loggable;
 
 import java.io.FileInputStream;
@@ -25,33 +27,66 @@ public class AskToolApi implements Loggable {
 
     @Test(description = "")
     public void login() throws FileNotFoundException {
-        // Test data
         HashMap<String, String> credentials = new HashMap<>();
         credentials.put("email", "teacher5@gmail.com");
         credentials.put("password", "12345Abc");
 
-
-        // Auth Service
-        RequestSpecification request = RestAssured.given()
-                .baseUri("http://ask-stage.portnov.com")
-                .basePath("/api/v1/sign-in")
-                .header(CONTENT_TYPE, JSON)
-                .body(credentials);
-
-        Response response = request.post();
-        getLogger().info("Response " + response.statusCode());
-        getLogger().info("Response " + response.getBody().asString());
-        String responseBody = response.getBody().asString();
-
-
-        Assert.assertEquals(response.statusCode(), 200);
-
-        // Schema validation
-        InputStream inputStream = new FileInputStream("src/test/java/straightWithoutBdd/api/Auth.json");
-        JSONObject rawSchema = new JSONObject(new JSONTokener(inputStream));
-        Schema schema = SchemaLoader.load(rawSchema);
-        schema.validate(new JSONObject(responseBody));
+        new AuthService().login(credentials);
     }
 
+
+    @Test(description = "get Quizzes")
+    public void getQuizzes() throws FileNotFoundException {
+        HashMap<String, String> credentials = new HashMap<>();
+        credentials.put("email", "teacher5@gmail.com");
+        credentials.put("password", "12345Abc");
+
+        new GetQuizzesApi().getQuizzes(new AuthService().login(credentials));
+    }
+
+    @Test(description = "get Quizzes")
+    public void getAssignments() throws FileNotFoundException {
+        HashMap<String, String> credentials = new HashMap<>();
+        credentials.put("email", "teacher5@gmail.com");
+        credentials.put("password", "12345Abc");
+
+        new GetAssignments().getAssignments(new AuthService().login(credentials));
+    }
+
+    @Test(description = "create new quiz")
+    public void newQuiz() throws FileNotFoundException {
+        HashMap<String, String> credentials = new HashMap<>();
+        credentials.put("email", "teacher5@gmail.com");
+        credentials.put("password", "12345Abc");
+
+        NewQuiz nq = new NewQuiz();
+        Response response = nq.newQuiz(new AuthService().login(credentials));
+        Assert.assertEquals(response.statusCode(), 200);
+    }
+
+    @Test(description = "change quiz")
+    public void changeQuiz() throws FileNotFoundException {
+        HashMap<String, String> credentials = new HashMap<>();
+        credentials.put("email", "teacher5@gmail.com");
+        credentials.put("password", "12345Abc");
+
+        NewQuiz nq = new NewQuiz();
+        Response response = nq.newQuiz(new AuthService().login(credentials));
+        String id = response.getBody().as(NewQuizResponse.class).getId().toString();
+        getLogger().info("id for change is " + id);
+
+        ChangeQuiz cq = new ChangeQuiz();
+        cq.changeQuiz(new AuthService().login(credentials), id);
+        Assert.assertEquals(response.statusCode(), 200);
+    }
+
+    @Test(description = "change name")
+    public void changeName() throws FileNotFoundException {
+        HashMap<String, String> credentials = new HashMap<>();
+        credentials.put("email", "4hocinelosane0@rtfs.site");
+        credentials.put("password", "12345");
+        String token = new AuthService().login(credentials);
+        new AskChangeName().changeName("NewName forArtur",token);
+    }
 
 }

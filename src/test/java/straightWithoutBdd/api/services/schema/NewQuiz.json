@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "totalScore": {
+      "type": "integer"
+    },
+    "passingPercentage": {
+      "type": "integer"
+    },
+    "showStopperQuestion": {
+      "type": "integer"
+    },
+    "questions": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "question": {
+              "type": "string"
+            },
+            "score": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "type",
+            "question",
+            "score"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "question": {
+              "type": "string"
+            },
+            "score": {
+              "type": "integer"
+            },
+            "answer": {
+              "type": "integer"
+            },
+            "hasOtherOption": {
+              "type": "boolean"
+            },
+            "options": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "question",
+            "score",
+            "answer",
+            "hasOtherOption",
+            "options"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "question": {
+              "type": "string"
+            },
+            "score": {
+              "type": "integer"
+            },
+            "answers": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "hasOtherOption": {
+              "type": "boolean"
+            },
+            "options": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "question",
+            "score",
+            "answers",
+            "hasOtherOption",
+            "options"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "totalScore",
+    "passingPercentage",
+    "showStopperQuestion",
+    "questions"
+  ]
+}

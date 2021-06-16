@@ -7,6 +7,7 @@ import org.everit.json.schema.Schema;
 import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.testng.Assert;
 import straightWithoutBdd.api.services.pojo.UserResponse;
 import utils.Loggable;
 
@@ -28,8 +29,6 @@ public class AuthService implements Loggable {
     public static final String AUTH = "Authorization";
 
     public String login(Map<String, String> user) throws FileNotFoundException {
-
-
         getLogger().info("Logging in user " + user.get("email"));
         // prepare
 
@@ -43,11 +42,13 @@ public class AuthService implements Loggable {
         // execute
         Response response = request.when()
                 .post();
+        getLogger().info("Response " + response.statusCode());
+        getLogger().info("Response " + response.getBody().asString());
 
         // validate time
         response.then().log().all()
                 .time(lessThan(1000L));
-
+        Assert.assertEquals(response.statusCode(), 200);
 
         // verify and extract data
         Map<String, Object> result = response.then()

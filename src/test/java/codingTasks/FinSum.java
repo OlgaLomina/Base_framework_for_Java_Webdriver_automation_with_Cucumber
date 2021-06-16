@@ -1,25 +1,18 @@
 package codingTasks;
 
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class FinSum {
     public int[] twoSum(int[] nums, int target) {
-        int[] result = new int[2];
-        HashMap<Integer, Integer> num = new HashMap<>();
-        int l = nums.length;
-        int difference;
-
-        for (int i = 0; i < l; i++) {
-            difference = target - nums[i];
-            if (num.containsKey(nums[i])) {
-                result[0] = num.get(nums[i]);
-                result[1] = i;
-                return result;
-            } else {
-                num.put(difference, i);
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int i = 0; i < nums.length; i++) {
+                int complement = target - nums[i];
+                if (map.containsKey(complement)) {
+                    return new int[] { map.get(complement), i };
+                }
+                map.put(nums[i], i);
             }
+            throw new IllegalArgumentException("No two sum solution");
         }
-        return null;
-    }
 }
