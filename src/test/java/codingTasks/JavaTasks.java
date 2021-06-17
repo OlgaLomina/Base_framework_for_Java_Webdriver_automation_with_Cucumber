@@ -1,8 +1,6 @@
 package codingTasks;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class JavaTasks {
     public static void main(String[] args) {
@@ -94,5 +92,37 @@ public class JavaTasks {
             }
         }
         return false;
+    }
+
+
+    public static int romanToInt(String s) {
+
+        Map<Character, Integer> digitTable = new HashMap<>();
+        digitTable.put('I', 1);
+        digitTable.put('V', 5);
+        digitTable.put('X', 10);
+        digitTable.put('L', 50);
+        digitTable.put('C', 100);
+        digitTable.put('D', 500);
+        digitTable.put('M', 1000);
+
+        int res = digitTable.get(s.charAt(s.length() - 1));
+
+        if (s.length() == 1) {
+            return res;
+        }
+
+        for (int i = s.length() - 1; i > 0 ; i--) {
+            int currentValue = digitTable.get(s.charAt(i));
+            int previousValue = digitTable.get(s.charAt(i - 1));
+
+            if (currentValue <= previousValue) {
+                res += previousValue;
+            } else {
+                res -= previousValue;
+            }
+        }
+
+        return res;
     }
 }
