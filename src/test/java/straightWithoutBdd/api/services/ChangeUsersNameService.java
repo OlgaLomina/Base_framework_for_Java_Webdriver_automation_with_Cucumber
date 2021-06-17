@@ -9,26 +9,26 @@ import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.junit.Assert;
-import straightWithoutBdd.api.services.pojo.CreateQuizResponse;
+import straightWithoutBdd.api.services.pojo.ChangeUsersNameResponse;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Map;
 
 import static bdd.support.TestContext.getData;
 
-public class CreateQuizzesService implements Loggable {
-    String basePath = "/api/v1/quiz";
-    String baseUri = GetContent.getBaseUri();
-    public static final String CONTENT_TYPE = GetContent.getContentType();
-    public static final String JSON = GetContent.getJson();
-    public static final String AUTH = GetContent.getAuth();
+public class ChangeUsersNameService implements Loggable {
+    //http://ask-stage.portnov.com/api/v1/settings/change-name
+    String baseUri = "http://ask-stage.portnov.com";
+    String basePath = "/api/v1/settings/change-name";
+    public static final String CONTENT_TYPE = "Content-Type";
+    public static final String JSON = "application/json";
+    public static final String AUTH = "Authorization";
+    //"/:userId"
 
-    private Integer quizId;
-
-    public Response createQuizzes(String token) throws FileNotFoundException {
-        getLogger().info("Loggin in with token " + token);
+    public Response changeUsersName(String token) throws FileNotFoundException {
+        getLogger().info("Login in with token " + token);
+        //getLogger().info("UserId : " + userId);
 
         //Auth Service
         RequestSpecification request = RestAssured.given()
@@ -37,7 +37,7 @@ public class CreateQuizzesService implements Loggable {
                 .basePath(basePath)
                 .header(CONTENT_TYPE, JSON)
                 .header(AUTH, token)
-                .body(getData("newQuiz_example"));
+                .body(getData("updateUsersName"));
 
         // execute
         Response response = request.when().post();
@@ -47,22 +47,13 @@ public class CreateQuizzesService implements Loggable {
 
         Assert.assertEquals(response.statusCode(), 200);
 
-        // verify and extract data
-        Map<String, Object> result = response.then()
-                .extract()
-                .jsonPath()
-                .getMap("");
+        String message = response.getBody().as(ChangeUsersNameResponse.class).getMessage();
+        getLogger().info(message);
 
-        quizId = (Integer) result.get("id");
-        getLogger().info(quizId);
-
-        // POJO EXAMPLE
-        var createQuizResponse = response.getBody().as(CreateQuizResponse.class);
-        getLogger().info("POJO " + createQuizResponse.getId());
 
         // Validate Schema
         var responseBody = response.getBody().asString();
-        InputStream inputStream = new FileInputStream("src/test/java/straightWithoutBdd/api/services/schema/CreateQuizz.json");
+        InputStream inputStream = new FileInputStream("src/test/java/straightWithoutBdd/api/services/schema/UpdateUsersName.json");
         JSONObject rawSchema = new JSONObject(new JSONTokener(inputStream));
         Schema schema = SchemaLoader.load(rawSchema);
         schema.validate(new JSONObject(responseBody));

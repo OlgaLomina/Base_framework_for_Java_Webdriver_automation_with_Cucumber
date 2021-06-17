@@ -1,7 +1,7 @@
-name: Create_quiz_example
+name: new_example1
 totalScore: 15
 passingPercentage: 75
-showStopperQuestion: 0
+showStopperQuestion:
 questions:
   - type: TEXTUAL
     question: What is the capital of USA?
@@ -20,13 +20,13 @@ questions:
     score: 5
     options:
       - black
-      - white
+      - while
       - red
       - green
     answers:
       - 1
-      - 2
       - 3
+      - 2
     hasOtherOption: true
 createdAt:
 updatedAt:

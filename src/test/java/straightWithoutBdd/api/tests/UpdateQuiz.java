@@ -6,11 +6,12 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import straightWithoutBdd.api.services.AuthorizationService;
 import straightWithoutBdd.api.services.CreateQuizzesService;
+import straightWithoutBdd.api.services.GetCredentials;
 import straightWithoutBdd.api.services.UpdateQuizzesService;
+import straightWithoutBdd.api.services.pojo.CreateQuizResponse;
 
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class UpdateQuiz {
 
@@ -19,10 +20,7 @@ public class UpdateQuiz {
 
     @BeforeTest
     public void specifyToken() throws FileNotFoundException {
-        HashMap<String, String> credentials = new HashMap<>();
-        credentials.put("email", "teacher5@gmail.com");
-        credentials.put("password", "12345Abc");
-        token = new AuthorizationService().login(credentials);
+        token = new AuthorizationService().login(GetCredentials.getCredentials());
     }
 
     @Test(description = "update quiz")
@@ -30,8 +28,7 @@ public class UpdateQuiz {
 
         CreateQuizzesService createQuizzes = new CreateQuizzesService();
         Response responseCreate = createQuizzes.createQuizzes(token);
-        String responseBody = responseCreate.getBody().asString();
-        quizId = responseBody.substring(6, 9);
+        quizId = responseCreate.getBody().as(CreateQuizResponse.class).getId().toString();
 
         UpdateQuizzesService updateQuizzes = new UpdateQuizzesService();
         Response responseUpdate = updateQuizzes.updateQuiz(token, quizId);

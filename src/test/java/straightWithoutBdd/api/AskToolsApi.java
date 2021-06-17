@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.junit.Assert;
 import org.testng.annotations.Test;
+import straightWithoutBdd.api.services.GetContent;
+import straightWithoutBdd.api.services.GetCredentials;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,22 +27,18 @@ import static org.hamcrest.Matchers.lessThan;
 public class AskToolsApi implements Loggable {
 
     // http://ask-stage.portnov.com/api/v1/sign-in
-    String baseUri = "http://ask-stage.portnov.com";
+    String baseUri = GetContent.getBaseUri();
     String basePath = "/api/v1/sign-in";
 
-    @Test(description = "")
+    @Test(description = "login")
     public void login() throws FileNotFoundException {
-        //Test data
-        Map<String, String> credentials = new HashMap<>();
-        credentials.put("email", "teacher5@gmail.com");
-        credentials.put("password", "12345Abc");
 
         //Auth Service
         RequestSpecification request = RestAssured.given()
                 .baseUri(baseUri)
                 .basePath(basePath)
                 .header(CONTENT_TYPE, JSON)
-                .body(credentials);
+                .body(GetCredentials.getCredentials());
 
         Response response = request.post();
         getLogger().info("Response " + response.statusCode());

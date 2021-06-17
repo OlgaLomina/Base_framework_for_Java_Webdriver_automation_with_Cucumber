@@ -11,11 +11,13 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.junit.Assert;
 import org.testng.annotations.Test;
+import straightWithoutBdd.api.services.pojo.CreateQuizResponse;
 import straightWithoutBdd.api.services.pojo.UserResponse;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.lessThan;
@@ -24,7 +26,7 @@ import static bdd.support.RestClient.JSON;
 
 public class AuthorizationService implements Loggable {
     // http://ask-stage.portnov.com/api/v1/sign-in
-    String baseUri = "http://ask-stage.portnov.com";
+    String baseUri = GetContent.getBaseUri();
     String basePath = "/api/v1/sign-in";
     private static String loginToken;
 
@@ -42,8 +44,6 @@ public class AuthorizationService implements Loggable {
         // execute
         Response response = request.when().post();
 
-
-
         getLogger().info("Response " + response.statusCode());
         getLogger().info("Response " + response.getBody().asString());
 
@@ -57,6 +57,8 @@ public class AuthorizationService implements Loggable {
 
         loginToken = "Bearer " + result.get("token");
         getLogger().info(loginToken);
+        String userName = result.get("user").toString();
+        getLogger().info(userName);
 
         // POJO EXAMPLE
         var userResponse = response.getBody().as(UserResponse.class);

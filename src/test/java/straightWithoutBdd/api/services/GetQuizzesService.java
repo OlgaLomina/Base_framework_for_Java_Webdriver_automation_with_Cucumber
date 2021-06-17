@@ -17,12 +17,11 @@ import java.util.Map;
 import static org.hamcrest.Matchers.lessThan;
 
 public class GetQuizzesService implements Loggable {
-
-    String baseUri = "http://ask-stage.portnov.com";
     String basePath = "/api/v1/quizzes";
-    public static final String CONTENT_TYPE = "Content-Type";
-    public static final String JSON = "application/json";
-    public static final String AUTH = "Authorization";
+    String baseUri = GetContent.getBaseUri();
+    public static final String CONTENT_TYPE = GetContent.getContentType();
+    public static final String JSON = GetContent.getJson();
+    public static final String AUTH = GetContent.getAuth();
 
     public Response getQuizzes(String token) {
             getLogger().info("Loggin in with token " + token);

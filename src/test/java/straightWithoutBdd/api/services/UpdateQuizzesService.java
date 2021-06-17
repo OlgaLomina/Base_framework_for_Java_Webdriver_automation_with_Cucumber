@@ -9,7 +9,6 @@ import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.junit.Assert;
-import straightWithoutBdd.api.services.pojo.CreateQuizResponse;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,15 +18,16 @@ import java.util.Map;
 import static bdd.support.TestContext.getData;
 
 public class UpdateQuizzesService  implements Loggable {
-    String baseUri = "http://ask-stage.portnov.com";
     String basePath = "/api/v1/quiz";
-    public static final String CONTENT_TYPE = "Content-Type";
-    public static final String JSON = "application/json";
-    public static final String AUTH = "Authorization";
-    private Integer quizName;
+    String baseUri = GetContent.getBaseUri();
+    public static final String CONTENT_TYPE = GetContent.getContentType();
+    public static final String JSON = GetContent.getJson();
+    public static final String AUTH = GetContent.getAuth();
 
     public Response updateQuiz(String token, String quizId) throws FileNotFoundException {
-        getLogger().info("Update quiz id " + quizId);
+        getLogger().info("Update quiz for id " + quizId);
+        Map<String, String> updatedQuiz = getData("updateQuiz");
+        updatedQuiz.put("id", quizId);
 
         //Auth Service
         RequestSpecification request = RestAssured.given()
@@ -36,52 +36,7 @@ public class UpdateQuizzesService  implements Loggable {
                 .basePath(basePath)
                 .header(CONTENT_TYPE, JSON)
                 .header(AUTH, token)
-                .body("{\n" +
-                        "  \"id\":" + quizId +",\n" +
-                        "  \"name\":\"Update_quiz_example\",\n" +
-                        "  \"totalScore\":15,\n" +
-                        "  \"passingPercentage\":75,\n" +
-                        "  \"showStopperQuestion\":0,\n" +
-                        "  \"questions\":[\n" +
-                        "    {\n" +
-                        "      \"type\":\"TEXTUAL\",\n" +
-                        "      \"question\":\"What is the capital of USA?\",\n" +
-                        "      \"score\":5\n" +
-                        "    },\n" +
-                        "    {\n" +
-                        "      \"type\":\"SINGLE_CHOICE\",\n" +
-                        "      \"question\":\"5+4*2\",\n" +
-                        "      \"score\":5,\n" +
-                        "      \"options\":[\n" +
-                        "        \"13\",\n" +
-                        "        \"18\",\n" +
-                        "        \"0\"\n" +
-                        "      ],\n" +
-                        "      \"answer\":0,\n" +
-                        "      \"hasOtherOption\":null\n" +
-                        "    },\n" +
-                        "    {\n" +
-                        "      \"type\":\"MULTIPLE_CHOICE\",\n" +
-                        "      \"question\":\"What are your favorive colors?\",\n" +
-                        "      \"score\":5,\n" +
-                        "      \"options\":[\n" +
-                        "        \"black\",\n" +
-                        "        \"white\",\n" +
-                        "        \"red\",\n" +
-                        "        \"green\"\n" +
-                        "      ],\n" +
-                        "      \"answers\":[\n" +
-                        "        1,\n" +
-                        "        2,\n" +
-                        "        3\n" +
-                        "      ],\n" +
-                        "      \"hasOtherOption\":true\n" +
-                        "    }\n" +
-                        "  ],\n" +
-                        "  \"createdAt\":null,\n" +
-                        "  \"updatedAt\":null\n" +
-                        "}");
-
+                .body(updatedQuiz);
 
         // execute
         Response response = request.when().put();
@@ -93,7 +48,7 @@ public class UpdateQuizzesService  implements Loggable {
 
         // Validate Schema
         var responseBody = response.getBody().asString();
-        InputStream inputStream = new FileInputStream("src/test/java/straightWithoutBdd/api/services/schema/CreateQuizz.json");
+        InputStream inputStream = new FileInputStream("src/test/java/straightWithoutBdd/api/services/schema/UpdateQuiz.json");
         JSONObject rawSchema = new JSONObject(new JSONTokener(inputStream));
         Schema schema = SchemaLoader.load(rawSchema);
         schema.validate(new JSONObject(responseBody));
