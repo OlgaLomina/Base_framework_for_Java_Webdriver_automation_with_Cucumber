@@ -1,0 +1,15 @@
+name: example1
+totalScore: 5
+passingPercentage: 75
+showStopperQuestion:
+questions:
+  - type: SINGLE_CHOICE
+    question: 2*2?
+    score: 5
+    options:
+      - '4'
+      - '5'
+    answer: 0
+    hasOtherOption:
+createdAt:
+updatedAt:

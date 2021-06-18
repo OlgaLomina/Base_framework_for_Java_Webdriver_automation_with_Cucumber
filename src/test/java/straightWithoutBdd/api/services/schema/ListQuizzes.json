@@ -1,0 +1,1253 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "question": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "question"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answer": {
+                  "type": "integer"
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answer",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answers": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answers",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            }
+          ]
+        },
+        "totalScore": {
+          "type": "integer"
+        },
+        "passingPercentage": {
+          "type": "integer"
+        },
+        "showStopperQuestion": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "questions",
+        "totalScore",
+        "passingPercentage",
+        "showStopperQuestion",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "question": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "question"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answer": {
+                  "type": "integer"
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answer",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answers": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answers",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            }
+          ]
+        },
+        "totalScore": {
+          "type": "integer"
+        },
+        "passingPercentage": {
+          "type": "integer"
+        },
+        "showStopperQuestion": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "questions",
+        "totalScore",
+        "passingPercentage",
+        "showStopperQuestion",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "question": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "question"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answer": {
+                  "type": "integer"
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answer",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answers": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answers",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            }
+          ]
+        },
+        "totalScore": {
+          "type": "integer"
+        },
+        "passingPercentage": {
+          "type": "integer"
+        },
+        "showStopperQuestion": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "questions",
+        "totalScore",
+        "passingPercentage",
+        "showStopperQuestion",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "question": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "question"
+              ]
+            }
+          ]
+        },
+        "totalScore": {
+          "type": "integer"
+        },
+        "passingPercentage": {
+          "type": "integer"
+        },
+        "showStopperQuestion": {
+          "type": "null"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "questions",
+        "totalScore",
+        "passingPercentage",
+        "showStopperQuestion",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "question": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "question"
+              ]
+            }
+          ]
+        },
+        "totalScore": {
+          "type": "integer"
+        },
+        "passingPercentage": {
+          "type": "integer"
+        },
+        "showStopperQuestion": {
+          "type": "null"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "questions",
+        "totalScore",
+        "passingPercentage",
+        "showStopperQuestion",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "question": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "question"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answer": {
+                  "type": "integer"
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answer",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answers": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answers",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            }
+          ]
+        },
+        "totalScore": {
+          "type": "integer"
+        },
+        "passingPercentage": {
+          "type": "integer"
+        },
+        "showStopperQuestion": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "questions",
+        "totalScore",
+        "passingPercentage",
+        "showStopperQuestion",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "question": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "question"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answer": {
+                  "type": "integer"
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answer",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answers": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answers",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            }
+          ]
+        },
+        "totalScore": {
+          "type": "integer"
+        },
+        "passingPercentage": {
+          "type": "integer"
+        },
+        "showStopperQuestion": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "questions",
+        "totalScore",
+        "passingPercentage",
+        "showStopperQuestion",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "question": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "question"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answer": {
+                  "type": "integer"
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answer",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answers": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answers",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            }
+          ]
+        },
+        "totalScore": {
+          "type": "integer"
+        },
+        "passingPercentage": {
+          "type": "integer"
+        },
+        "showStopperQuestion": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "questions",
+        "totalScore",
+        "passingPercentage",
+        "showStopperQuestion",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "question": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "question"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answer": {
+                  "type": "integer"
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answer",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "answers": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "options": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "question": {
+                  "type": "string"
+                },
+                "hasOtherOption": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "score",
+                "answers",
+                "options",
+                "question",
+                "hasOtherOption"
+              ]
+            }
+          ]
+        },
+        "totalScore": {
+          "type": "integer"
+        },
+        "passingPercentage": {
+          "type": "integer"
+        },
+        "showStopperQuestion": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "questions",
+        "totalScore",
+        "passingPercentage",
+        "showStopperQuestion",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  ]
+}

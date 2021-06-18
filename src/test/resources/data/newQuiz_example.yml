@@ -1,0 +1,32 @@
+name: new_example1
+totalScore: 15
+passingPercentage: 75
+showStopperQuestion:
+questions:
+  - type: TEXTUAL
+    question: What is the capital of USA?
+    score: 5
+  - type: SINGLE_CHOICE
+    question: 5+4*2
+    score: 5
+    options:
+      - '13'
+      - '18'
+      - '0'
+    answer: 0
+    hasOtherOption:
+  - type: MULTIPLE_CHOICE
+    question: What are your favorive colors?
+    score: 5
+    options:
+      - black
+      - while
+      - red
+      - green
+    answers:
+      - 1
+      - 3
+      - 2
+    hasOtherOption: true
+createdAt:
+updatedAt:

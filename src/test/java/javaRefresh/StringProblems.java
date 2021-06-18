@@ -18,8 +18,11 @@ public class StringProblems {
             return str;
         } else {
             String s = "#";
-            //String a = s.repeat(len - 4);
-            //String b = str.substring((len - 4), len);
+            int a = (len - 4);
+            System.out.println(a);
+
+            String b = str.substring((len - 4), len);
+            System.out.println(b);
             return  s.repeat(len - 4) + str.substring((len - 4), len);
         }
 
