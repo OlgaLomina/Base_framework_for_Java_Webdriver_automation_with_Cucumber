@@ -164,7 +164,6 @@ public class AskToolApi implements Loggable {
         getLogger().info("Response body for change name: "+response.getBody().asString());
         Assert.assertEquals(response.statusCode(),200);
 
-
     }
 
     @Test
