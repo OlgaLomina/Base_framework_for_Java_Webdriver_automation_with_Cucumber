@@ -1,27 +1,23 @@
 package straightWithoutBdd.ui.tests;
 
-import bdd.support.Loggable;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
+import utils.Loggable;
+import utils.TestContext;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
-import static straightWithoutBdd.utils.DriverInitializer.setBrowser;
+import java.util.concurrent.TimeUnit;
+
+import static utils.TestContext.getConfig;
+import static utils.TestContext.getDriver;
 
 public class BaseTest implements Loggable {
-    public WebDriver driver;
 
     @BeforeTest
     public void setup() {
-        driver = setBrowser("chrome");
-        if (driver != null) {
-            driver.manage().window().maximize();
-        }
-    }
-
-    @Test
-    public void testSample() {
-        driver.get("https://www.google.com/");
+        TestContext.initialize();
+        TestContext.setTimestamp();
+        getDriver().manage().timeouts().pageLoadTimeout(getConfig().pageLoadTimeout, TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(getConfig().implicitTimeout, TimeUnit.SECONDS);
+        getDriver().manage().deleteAllCookies();
     }
 
 
@@ -29,8 +25,8 @@ public class BaseTest implements Loggable {
      * Uncomment if you want browser to close
      */
 //    @AfterTest
-//    public void closeDriver(){
-//        driver.quit();
+//    public void closeDriver() {
+//        getDriver().quit();
 //    }
 
 

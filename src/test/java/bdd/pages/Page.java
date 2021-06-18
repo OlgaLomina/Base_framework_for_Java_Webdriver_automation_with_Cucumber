@@ -9,13 +9,13 @@ import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import bdd.support.Loggable;
+import utils.Loggable;
 
 import java.util.List;
 import java.util.logging.Level;
 
-import static bdd.support.TestContext.*;
-import static bdd.support.TestContext.getWait;
+import static utils.TestContext.*;
+import static utils.TestContext.getWait;
 
 public class Page implements Loggable {
 

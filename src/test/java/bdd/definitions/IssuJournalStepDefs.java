@@ -12,7 +12,7 @@ public class IssuJournalStepDefs {
     IssuSearchResultPage searchResultPage = new IssuSearchResultPage();
 
     @Given("Navigate to Main Page")
-    public void navigate (){
+    public void navigate_to_main_page() {
         mainPage.navigateTo();
     }
 
