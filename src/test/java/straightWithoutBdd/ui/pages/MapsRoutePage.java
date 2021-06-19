@@ -9,7 +9,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapsRoutePage extends MapsSearchPage{
+public class MapsRoutePage extends BasePage {
     public MapsRoutePage(WebDriver driver) {
         super(driver);
     }
