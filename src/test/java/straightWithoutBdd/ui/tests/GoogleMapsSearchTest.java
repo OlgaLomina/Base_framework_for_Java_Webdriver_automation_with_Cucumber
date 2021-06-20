@@ -1,13 +1,10 @@
 package straightWithoutBdd.ui.tests;
 
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import straightWithoutBdd.ui.pages.MapsRoutePage;
 import straightWithoutBdd.ui.pages.MapsSearchPage;
-import java.util.Map;
-import static bdd.support.TestContext.getData;
+
 import java.lang.Object;
 
 public class GoogleMapsSearchTest extends BaseTest{
