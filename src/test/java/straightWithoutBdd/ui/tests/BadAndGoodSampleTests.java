@@ -11,15 +11,8 @@ import straightWithoutBdd.ui.pages.IssuMainJournalPage;
 
 import java.util.List;
 
-
 public class BadAndGoodSampleTests extends BaseTest {
-
-
-    /**
-     * All logic in one place - not separated in Page Object.
-     * It's usually the beginners test
-     */
-
+    // All logic in one place - not separated in Page Object.
     @Test
     public void badSample() {
         driver.get("https://issuu.com/");
@@ -31,18 +24,14 @@ public class BadAndGoodSampleTests extends BaseTest {
         }
     }
 
-    /**
-     * Test with page object model
-     * We encapsulate\hide the logic in domain specific language
-     */
+    // Test with page object model. We encapsulate\hide the logic in domain specific language
     @Test
     public void withPageObject() {
         String testWord = "National Geographic";
 
         IssuMainJournalPage mainPage = new IssuMainJournalPage(driver);
         mainPage.open();
-        List<String> titles = mainPage.search(testWord)
-                .getTitles();
+        List<String> titles = mainPage.search(testWord).getTitles();
 
         // Option 1 - Assertions inside tests (more preferable)
         for (String e : titles) {
