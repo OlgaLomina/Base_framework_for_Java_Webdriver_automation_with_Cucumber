@@ -70,10 +70,10 @@ public class AuthorizationService implements Loggable {
 
     }
 
-    public String getToken(String email, String password){
-        Response response = getAuthResponse("email",password);
-        return "Bearer "+response.then().statusCode(200).extract().jsonPath().get("token");
-    }
+//    public String getToken(String email, String password){
+//        Response response = getAuthResponse("email",password);
+//        return "Bearer "+response.then().statusCode(200).extract().jsonPath().get("token");
+//    }
 
     public Response getAuthResponse(String email, String password){
         credentials.put("email","teacher2@gmail.com");
