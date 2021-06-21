@@ -26,6 +26,7 @@ public class AuthorizationService implements Loggable {
 
     private String baseUri = "http://ask-stage.portnov.com";
     private String authBasePath = "/api/v1/sign-in";
+    Map<String, String> credentials = new HashMap<>();
 
     public String getToken(Map<String, String> loginCreds) throws IOException {
         String token="";
@@ -66,6 +67,34 @@ public class AuthorizationService implements Loggable {
 
 //        return "Bearer "+token;
         return token;
+
+    }
+
+    public String getToken(String email, String password){
+        Response response = getAuthResponse("email",password);
+        return "Bearer "+response.then().statusCode(200).extract().jsonPath().get("token");
+    }
+
+    public Response getAuthResponse(String email, String password){
+        credentials.put("email","teacher2@gmail.com");
+        credentials.put("password","12345Abc");
+
+        Response response = RestAssured.given()
+                .log().all()
+                .baseUri(baseUri)
+                .basePath(authBasePath)
+                .header(CONTENT_TYPE,JSON)
+                .body(credentials)
+                .when()
+                .post();
+
+        getLogger().info("Response code: "+response.statusCode());
+        getLogger().info("Response code: "+response.getBody());
+
+        var userResponse = response.getBody().asString();
+        Assert.assertEquals(response.statusCode(),200);
+
+        return response;
 
     }
 
