@@ -1,3 +1,6 @@
+/**
+ * This has all dirty code
+ */
 package straightWithoutBdd.ui.tests.api;
 
 import io.restassured.RestAssured;

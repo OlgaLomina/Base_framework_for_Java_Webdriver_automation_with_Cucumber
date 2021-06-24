@@ -6,6 +6,7 @@ import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import straightWithoutBdd.ui.api.AssignmentsService;
 import straightWithoutBdd.ui.api.AuthorizationService;
@@ -41,10 +42,10 @@ public class FlowTests implements Loggable {
 
     }
 
-    @Test(description = "Pojo validation")
-    public  void validatePojo() throws IOException{
+    @Test(description = "Pojo validation",dataProvider = "TestData")
+    public  void validatePojo(String usrId, String pwd) throws IOException{
 
-        Response response = new AuthorizationService().getAuthResponse("teacher2@gmail.com","12345Abc");
+        Response response = new AuthorizationService().getAuthResponse(usrId,pwd);
         var userResponse=response.getBody().as(UserResponse.class);
         getLogger().info("POJO "+userResponse.getUser().getRole());
 
@@ -60,7 +61,6 @@ public class FlowTests implements Loggable {
 
         Response response = new QuizService().getQuizzes(token);
 
-        //Assertions
         Assert.assertEquals(response.statusCode(),200);
 
 
@@ -68,34 +68,27 @@ public class FlowTests implements Loggable {
 
     @Test(description = "Creating a new Quiz")
     public void validateCreateQUiz() throws IOException{
-        //Getting the Quiz payload
         Map<String, String> quizMp = getData("new_quiz");
 
-        //Getting the token
         Map<String, String> credentials = new HashMap<>();
         credentials.put("email","teacher2@gmail.com");
         credentials.put("password","12345Abc");
         String token = new AuthorizationService().getToken(credentials);
 
-        //Getting the response
         Response response = new QuizService().createQuiz(quizMp, token);
 
-        //Assertions
         Assert.assertEquals(response.statusCode(),200);
     }
 
     @Test(description = "Update quiz")
     public void validateUpdateQuiz() throws IOException{
-        //Getting the Quiz payload
         Map<String,String> updtQz= getData("update_quiz");
 
-        //Getting the token
         Map<String, String> credentials = new HashMap<>();
         credentials.put("email","teacher2@gmail.com");
         credentials.put("password","12345Abc");
         String token = new AuthorizationService().getToken(credentials);
 
-        //Getting the response
         Response response = new QuizService().updateQuiz(updtQz,token);
 
         //Assertions
@@ -105,35 +98,41 @@ public class FlowTests implements Loggable {
 
     @Test(description = "Updating the name")
     public void validateChangeName() throws IOException{
-        //Getting the change name payload
         Map<String, String> newNm= new HashMap<>();
         newNm.put("newName", "Dena Brown");
 
-        //Getting the token
         Map<String, String> credentials = new HashMap<>();
         credentials.put("email","teacher2@gmail.com");
         credentials.put("password","12345Abc");
         String token = new AuthorizationService().getToken(credentials);
 
-        //Getting the response
         Response response = new NameService().changeName(newNm,token);
 
-        //Assertions
         Assert.assertEquals(response.statusCode(),200);
     }
 
     @Test(description = "Validate assignments")
     public void getAssignments() throws IOException {
-        //Getting the token
         Map<String, String> credentials = new HashMap<>();
         credentials.put("email","teacher2@gmail.com");
         credentials.put("password","12345Abc");
         String token = new AuthorizationService().getToken(credentials);
 
-        //Getting the response
         Response response = new AssignmentsService().getAssignments(token);
 
-        //Assertions
         Assert.assertEquals(response.statusCode(),200);
     }
+
+    @DataProvider(name="TestData")
+    public Object[][] getDataProvider(){
+
+        return new Object[][]{
+                {"teacher1@gmail.com","12345Abc"},
+                {"teacher2@gmail.com","12345Abc"},
+                {"teacher3@gmail.com","12345Abc"},
+                {"teacher4@gmail.com","12345Abc"}
+        };
+
+    }
+
 }
