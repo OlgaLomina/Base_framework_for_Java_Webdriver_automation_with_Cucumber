@@ -1,6 +1,8 @@
+/**
+ * This has all dirty code
+ */
 package straightWithoutBdd.ui.tests.api;
 
-import com.google.gson.JsonObject;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -10,15 +12,17 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import straightWithoutBdd.ui.api.AuthorizationService;
+import straightWithoutBdd.ui.api.pojo.UserResponse;
 import utils.Loggable;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.hamcrest.Matchers.lessThan;
 import static utils.RestClient.*;
 import static utils.TestContext.getData;
 
@@ -32,9 +36,14 @@ public class AskToolApi implements Loggable {
     String changeNameBasePath = "/api/v1/settings/change-name";
     String getAssignmentsBasePath = "api/v1/assignments";
     String token;
+    AuthorizationService authS = new AuthorizationService();
 
-//    @Test
-    public String getToken() throws IOException {
+  @Test
+  public void getTokenTest() throws IOException{
+      String tk = getToken();
+      getLogger().info("Token is: "+tk);
+  }
+  public String getToken() throws IOException {
         //Test data
         HashMap<String, String> credentials = new HashMap<>();
         credentials.put("email","teacher2@gmail.com");
@@ -62,9 +71,15 @@ public class AskToolApi implements Loggable {
 
 
         //printing out the response to see what information it have
-        getLogger().info("Respomse: "+response.statusCode());
+        getLogger().info("Response: "+response.statusCode());
         getLogger().info("Respomse: "+response.getBody().asString());
         getLogger().info("Token: "+token);
+
+        //POJO Example
+        var userResponse=response.getBody().as(UserResponse.class);
+        getLogger().info("POJO "+userResponse.getUser().getRole());
+
+
 
         //validate schema - option 2
         var responseBody= response.getBody().asString();
@@ -76,6 +91,26 @@ public class AskToolApi implements Loggable {
         Assert.assertEquals(response.statusCode(),200);
 //        return "Bearer "+token;
         return token;
+
+    }
+
+    @Test
+    public void login() throws IOException{
+      Map<String, String> credMap = new HashMap<>();
+      credMap.put("email","teacher2@gmail.com");
+      credMap.put("password","12345Abc");
+      authS.getToken(credMap);
+    }
+
+    @Test(description = "Schema validation")
+    public void validateSchema() throws FileNotFoundException {
+        Response response = authS.getAuthResponse("teacher5@gmail.com","12345Abc");
+        getLogger().info(response.getBody().asString());
+        var responseBody = response.getBody().asString();
+        InputStream inputStream = new FileInputStream("//straightWithoutBdd.ui//api/schemas/AuthSchema.json");
+        JSONObject rawSchema =new JSONObject(new JSONTokener(inputStream));
+        Schema schema = SchemaLoader.load(rawSchema);
+        schema.validate(new JSONObject(responseBody));
 
     }
 
