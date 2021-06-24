@@ -7,8 +7,9 @@ import io.cucumber.java.en.When;
 public class AskApiStepdefs {
     @Given("Create api request for sign_in")
     public void createApiRequestForSign_in() {
-
+        System.out.println();
     }
+
 
     @When("Call sign_in by post method")
     public void callSign_inByPostMethod() {
