@@ -28,8 +28,7 @@ public class IssuMainJournalPage extends BasePage {
 
         Actions actions = new Actions(getDriver());
         actions.sendKeys(Keys.ENTER);
-
-
+        makeScreenshotWithName("Issue_Search");
 
         return new IssuSearchResultPage();
     }

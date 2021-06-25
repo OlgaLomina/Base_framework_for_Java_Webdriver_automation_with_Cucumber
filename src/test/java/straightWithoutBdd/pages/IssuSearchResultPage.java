@@ -19,6 +19,7 @@ public class IssuSearchResultPage extends IssuMainJournalPage {
         for (WebElement e : list){
             resultSet.add(e.getText());
         }
+        makeScreenshotWithName("Issue_Result_Search");
         return resultSet;
     }
 }

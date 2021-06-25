@@ -26,15 +26,15 @@ public class Hooks {
 
     @After(order = 0)
     public void scenarioEnd(Scenario scenario) throws IOException {
-    //    if (scenario.isFailed()) {
+        if (scenario.isFailed()) {
             TakesScreenshot screenshotTaker = (TakesScreenshot) getDriver();
             byte[] screenshot = screenshotTaker.getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "Screenshot");
 
-    // Example of screenshot method
+    // Example of screenshot method save into the folder
             File srcFile=screenshotTaker.getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(srcFile, new File("screenshots.png"));
-   //     }
+            FileUtils.copyFile(srcFile, new File("screenshots\\screenshots" + scenario.getName() + ".png"));
+        }
         TestContext.teardown();
     }
 }

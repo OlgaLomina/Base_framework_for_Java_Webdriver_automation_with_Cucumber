@@ -1,5 +1,8 @@
 package straightWithoutBdd.pages;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
+import org.apache.commons.io.FileUtils;
 import utils.Loggable;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -9,8 +12,11 @@ import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.TestContext;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -94,6 +100,19 @@ public class BasePage implements Loggable {
 
     protected void waitForClickable(WebElement element) {
         getWait().until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    protected void makeScreenshotWithName(String description) {
+            TakesScreenshot screenshotTaker = (TakesScreenshot) getDriver();
+            byte[] screenshot = screenshotTaker.getScreenshotAs(OutputType.BYTES);
+
+            // Example of screenshot method save into the folder
+            File srcFile=screenshotTaker.getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(srcFile, new File("screenshots\\" + description + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void waitToBeSelected(WebElement element) {
