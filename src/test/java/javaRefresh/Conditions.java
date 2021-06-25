@@ -1,8 +1,15 @@
 package javaRefresh;
 
-public class Conditions {
+import io.cucumber.java8.An;
+import org.apache.logging.log4j.Logger;
+import utils.Loggable;
+
+import java.util.Stack;
+
+public class Conditions implements Loggable, Runnable {
 
     public static void main(String[] args) {
+
         // ordinary
         if (20 > 18) {
             System.out.println("20 is greater than 18");
@@ -62,5 +69,28 @@ public class Conditions {
     }
 
 
+    @Override
+    public void run() {
 
+    }
+
+    @Override
+    public Logger getLogger() {
+        return null;
+    }
+
+    @Override
+    public void logDebug(String message) {
+
+    }
+
+    @Override
+    public void logInfo(String message) {
+
+    }
+
+    @Override
+    public void logError(String message) {
+
+    }
 }

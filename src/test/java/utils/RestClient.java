@@ -31,6 +31,7 @@ public class RestClient implements Loggable {
         Response response = request.when()
                 .post();
 
+
         // verify and extract data
         Map<String, Object> result = response.then()
                 .log().all()

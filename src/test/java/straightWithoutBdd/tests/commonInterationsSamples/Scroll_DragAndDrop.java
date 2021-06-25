@@ -44,6 +44,7 @@ public class Scroll_DragAndDrop extends BaseTest {
                 .release(destinationLocator)
                 .build();
 
+
         //Performing the drag and drop action
         dragAndDrop.perform();
 

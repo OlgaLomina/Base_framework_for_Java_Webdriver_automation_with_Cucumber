@@ -3,7 +3,9 @@
 <suite name="Bank Suite" thread-count="3" parallel="classes">
     <test name="Login Test">
         <classes>
+            <class name="straightWithoutBdd.tests.IssuTests" />
             <class name="straightWithoutBdd.tests.IssuTests"/>
+            <class name="straightWithoutBdd.tests.BadAndGoodSampleTests"/>
          </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
